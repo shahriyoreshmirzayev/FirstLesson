@@ -13,8 +13,19 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Task<string> task = new Task<string>(DoSomething);
-        task.Start();
+        int[] scores = new int[] { 97, 92, 81, 60 };
+
+        // Query yozamiz
+        var scoreQuery =
+            from score in scores
+            where score > 80
+            select score;
+
+        // Query ma'lumotlaridan foydalanamiz 
+        foreach (int i in scoreQuery)
+        {
+            Console.Write(i + " ");
+        }
     }
     static string DoSomething()
     {
