@@ -8,23 +8,33 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using System.Threading.Tasks;
+using ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        int[] scores = new int[] { 97, 92, 81, 60 };
-
-        // Query yozamiz
+        LinqLesson();
+    }
+    static void LinqLesson()
+    {
+        int[] scores = new int[8] { 1, 2, 3, 4, 5, 6, 7, 8 };
+        //Query syntax
         var scoreQuery =
             from score in scores
-            where score > 80
+            where score % 2 == 0
             select score;
-
-        // Query ma'lumotlaridan foydalanamiz 
+        Console.WriteLine("Query Syntax");
         foreach (int i in scoreQuery)
         {
-            Console.Write(i + " ");
+            Console.WriteLine($"Juft sonlar: {i}");
+        }
+        //Method syntax
+        var MethodQuerySyntax = scores.Where(x => x % 2 == 0);
+        Console.WriteLine("Method Syntax");
+        foreach (var i in MethodQuerySyntax)
+        {
+            Console.WriteLine($"Juft sonlar: {i}");
         }
     }
     static string DoSomething()
