@@ -9,13 +9,13 @@
         public static void Select()
         {
             //Using Query Syntax
-            List<int> basicPropQuery = (from emp in Employee.GetEmployees()
+           /* IEnumerable<int> basicPropQuery = (from emp in Employee.GetEmployees()
                                         select emp.ID).ToList();
             Console.WriteLine("Query Syntax");
             foreach (var id in basicPropQuery)
             {
                 Console.WriteLine($"ID: {id}");
-            }
+            }*/
 
             IEnumerable<int> basicPropMethod = Employee.GetEmployees()
                 .Select(emp => emp.ID);
@@ -45,7 +45,6 @@
                 new() {ID = 106, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> {"C++", "C#", "Python"} }
                 };
             return employees;
-
         }
     }
 }
