@@ -2,19 +2,18 @@
 using ConsoleApp1._10_dars;
 using ConsoleApp1.Advanced._1_dars;
 using ConsoleApp1.Advanced._5_dars;
+using ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars;
 using System.Collections;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-using System.Threading.Tasks;
-using ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        LinqLesson();
+        LINQ_first_lesson.Start();
     }
     static void LinqLesson()
     {
@@ -40,7 +39,7 @@ internal class Program
     static string DoSomething()
     {
         Console.WriteLine("Nimadur");
-        
+
         Console.WriteLine($"Main Thread: {Thread.CurrentThread.ManagedThreadId}");
 
         return "Hello";
