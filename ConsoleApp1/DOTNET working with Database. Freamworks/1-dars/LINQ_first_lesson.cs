@@ -96,14 +96,13 @@
                                select new
                                {
                                    Employee_ID = emp.ID,
-                                   FirstName = emp.FirstName,
-                                   LastName = emp.LastName,
+                                   FullName = emp.FirstName + "  " + emp.LastName,
                                    AnnualSalary = emp.Salary,
                                });
             Console.WriteLine("Query Syntax");
             foreach(var emp in selectQuery)
             {
-                Console.WriteLine($"ID: {emp.Employee_ID} Name : {emp.FirstName} {emp.LastName}, Salary : {emp.AnnualSalary}");
+                Console.WriteLine($"ID: {emp.Employee_ID} Name : {emp.FullName}, Salary : {emp.AnnualSalary}");
             }
         }
     }
