@@ -4,18 +4,23 @@
     {
         public static void Start()
         {
-            Select();
+            //Select();
+            SelectFewProperties();
+
+
+
+
         }
         public static void Select()
         {
             //Using Query Syntax
-           /* IEnumerable<int> basicPropQuery = (from emp in Employee.GetEmployees()
-                                        select emp.ID).ToList();
-            Console.WriteLine("Query Syntax");
-            foreach (var id in basicPropQuery)
-            {
-                Console.WriteLine($"ID: {id}");
-            }*/
+            /* IEnumerable<int> basicPropQuery = (from emp in Employee.GetEmployees()
+                                         select emp.ID).ToList();
+             Console.WriteLine("Query Syntax");
+             foreach (var id in basicPropQuery)
+             {
+                 Console.WriteLine($"ID: {id}");
+             }*/
 
             IEnumerable<int> basicPropMethod = Employee.GetEmployees()
                 .Select(emp => emp.ID);
@@ -24,6 +29,37 @@
             {
                 Console.WriteLine($"ID: {id}");
             }
+        }
+        public static void SelectFewProperties()
+        {
+            //Query Syntax
+            IEnumerable<Employee> selectQuery = (from emp in Employee.GetEmployees()
+                                                 select new Employee()
+                                                 {
+                                                     FirstName = emp.FirstName,
+                                                     LastName = emp.LastName,
+                                                     Salary = emp.Salary,
+                                                 });
+            Console.WriteLine("Query Syntax");
+            foreach (var emp in selectQuery)
+            {
+                Console.WriteLine($"Name :{emp.FirstName}, {emp.LastName} : {emp.Salary}");
+            }
+
+            //Method Syntax
+            List<Employee> selectMethod = Employee.GetEmployees()
+                .Select(emp => new Employee()
+                {
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName,
+                    Salary = emp.Salary,
+                }).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var emp in selectMethod)
+            {
+                Console.WriteLine($"Name : {emp.FirstName}, {emp.LastName}: {emp.Salary}");
+            }
+
         }
     }
     public class Employee
