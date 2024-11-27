@@ -6,7 +6,8 @@
         {
             //Select();
             //SelectFewProperties();
-            SelectAnonymousType();
+            //SelectAnonymousType();
+            SelectCalculation();
         }
         public static void Select()
         {
@@ -58,7 +59,7 @@
             }
 
         }
-        public static void SelectAnonymousType()
+        public static void SelectAnonymousType() // anonim sifatida tiplarni qaytarmoqda
         {
             //Query Syntax
             var selectQuery = from emp in Employee.GetEmployees()
@@ -69,23 +70,40 @@
                                   Salary = emp.Salary,
                               };
             Console.WriteLine("Query Syntax");
-            foreach(var emp in selectQuery)
+            foreach (var emp in selectQuery)
             {
                 Console.WriteLine($"Name: {emp.FirstName} {emp.LastName} : {emp.Salary}");
             }
-
             //Method Syntax
             var selectMethod = Employee.GetEmployees()
                 .Select(emp => new
                 {
+                    Employee_ID = emp.ID,
                     FirstName = emp.FirstName,
                     LastName = emp.LastName,
                     Salary = emp.Salary,
                 });
             Console.WriteLine("Method Syntax");
-            foreach( var emp in selectMethod)
+            foreach (var emp in selectMethod)
             {
-                Console.WriteLine($"Name: {emp.FirstName} {emp.LastName} : {emp.Salary}");
+                Console.WriteLine($"Name: {emp.FirstName} {emp.LastName} : {emp.Salary}, ID : {emp.Employee_ID}");
+            }
+        }
+        public static void SelectCalculation()
+        {
+            //Query Syntax
+            var selectQuery = (from emp in Employee.GetEmployees()
+                               select new
+                               {
+                                   Employee_ID = emp.ID,
+                                   FirstName = emp.FirstName,
+                                   LastName = emp.LastName,
+                                   AnnualSalary = emp.Salary,
+                               });
+            Console.WriteLine("Query Syntax");
+            foreach(var emp in selectQuery)
+            {
+                Console.WriteLine($"ID: {emp.Employee_ID} Name : {emp.FirstName} {emp.LastName}, Salary : {emp.AnnualSalary}");
             }
         }
     }
@@ -100,12 +118,12 @@
         {
             List<Employee> employees = new()
             {
-                new() {ID = 101, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> {"C++", "C#", "Python" } },
-                new() {ID = 102, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> {"C++", "C#", "Python"}},
-                new() {ID = 103, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> {"C++", "C#", "Python"}},
-                new() {ID = 104, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> {"C++", "C#", "Python"}},
-                new() {ID = 105, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> {"C++", "C#", "Python"}},
-                new() {ID = 106, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> {"C++", "C#", "Python"} }
+                new() {ID = 101, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 100000, Programming = new List<string> { "C++", "C#", "Python" } },
+                new() {ID = 102, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 200000, Programming = new List<string> { "C++", "C#", "Python" } },
+                new() {ID = 103, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> { "C++", "C#", "Python" } },
+                new() {ID = 104, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 400000, Programming = new List<string> { "C++", "C#", "Python" } },
+                new() {ID = 105, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 500000, Programming = new List<string> { "C++", "C#", "Python" } },
+                new() {ID = 106, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 600000, Programming = new List<string> { "C++", "C#", "Python" } }
                 };
             return employees;
         }
