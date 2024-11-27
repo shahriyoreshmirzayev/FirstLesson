@@ -5,11 +5,8 @@
         public static void Start()
         {
             //Select();
-            SelectFewProperties();
-
-
-
-
+            //SelectFewProperties();
+            SelectAnonymousType();
         }
         public static void Select()
         {
@@ -43,7 +40,7 @@
             Console.WriteLine("Query Syntax");
             foreach (var emp in selectQuery)
             {
-                Console.WriteLine($"Name :{emp.FirstName}, {emp.LastName} : {emp.Salary}");
+                Console.WriteLine($"Name :{emp.FirstName} {emp.LastName} : {emp.Salary}");
             }
 
             //Method Syntax
@@ -57,9 +54,39 @@
             Console.WriteLine("Method Syntax");
             foreach (var emp in selectMethod)
             {
-                Console.WriteLine($"Name : {emp.FirstName}, {emp.LastName}: {emp.Salary}");
+                Console.WriteLine($"Name : {emp.FirstName} {emp.LastName}: {emp.Salary}");
             }
 
+        }
+        public static void SelectAnonymousType()
+        {
+            //Query Syntax
+            var selectQuery = from emp in Employee.GetEmployees()
+                              select new
+                              {
+                                  FirstName = emp.FirstName,
+                                  LastName = emp.LastName,
+                                  Salary = emp.Salary,
+                              };
+            Console.WriteLine("Query Syntax");
+            foreach(var emp in selectQuery)
+            {
+                Console.WriteLine($"Name: {emp.FirstName} {emp.LastName} : {emp.Salary}");
+            }
+
+            //Method Syntax
+            var selectMethod = Employee.GetEmployees()
+                .Select(emp => new
+                {
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName,
+                    Salary = emp.Salary,
+                });
+            Console.WriteLine("Method Syntax");
+            foreach( var emp in selectMethod)
+            {
+                Console.WriteLine($"Name: {emp.FirstName} {emp.LastName} : {emp.Salary}");
+            }
         }
     }
     public class Employee
