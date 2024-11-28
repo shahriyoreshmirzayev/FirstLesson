@@ -9,7 +9,8 @@
             //OrderByDescending();
             //OrderByDescendingStudents();
             //ThenBy();
-            OrderbyComplex();
+            //OrderbyComplex();
+            ReversegaOidAmaliyot();
         }
         public static void OrderBy_Amaliyot_1()
         {
@@ -137,6 +138,32 @@
             foreach (var number in QS)
             {
                 Console.WriteLine("Branch: " + number.Branch + ", Name: " + number.Name + ", Age: " + number.Age);
+            }
+        }
+        public static void ReversegaOidAmaliyot()
+        {
+            int[] newArray = new int[] { 10, 20, 16, 1000, 70, 150, 20 };
+            Console.WriteLine("Before Reverse the Data");
+            foreach (var number in newArray)
+            {
+                Console.Write($"{number} ");
+            }
+            Console.WriteLine("\n");
+            //Using Method Syntax
+            IEnumerable<int> ReverseDataMethodSyntax = newArray.Reverse();
+            Console.WriteLine("Method Syntax the Reverse array");
+            foreach(var number in ReverseDataMethodSyntax)
+            {
+                Console.Write($"{number} ");
+            }
+            Console.WriteLine("\n");
+            //Using Query Syntax
+            IEnumerable<int> ReverseDataQuerySyntax = (from number in newArray
+                                                       select number).Reverse();
+            Console.WriteLine("Query Syntax the Reverse array");
+            foreach( var number in ReverseDataQuerySyntax)
+            {
+                Console.Write($"{number} ");
             }
         }
     }
