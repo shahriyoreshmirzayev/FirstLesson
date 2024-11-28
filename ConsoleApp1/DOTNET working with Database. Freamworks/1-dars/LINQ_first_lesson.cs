@@ -8,7 +8,8 @@
             //SelectFewProperties();
             //SelectAnonymousType();
             //SelectCalculation();
-            SelectMany();
+            //SelectMany();
+            SelectManyExample();
         }
         public static void Select()
         {
@@ -124,17 +125,37 @@
         }
         public static void SelectMany()
         {
+            //Query Syntax
             List<string> nameList = new List<string>() { "Dilshod", "Shodiyev" };
 
             IEnumerable<char> querySyntax = from str in nameList
                                             from ch in str
                                             select ch;
-
             foreach (var ch in querySyntax)
             {
                 Console.Write($"{ch} ");
             }
+        }
+        public static void SelectManyExample()
+        {
+            //Using Method Syntax
+            List<string> MethodSyntax = Employee.GetEmployees().SelectMany(std => std.Programming).ToList();
 
+            //Using Query Syntax
+            IEnumerable<string> QuerySyntax = from emp in Employee.GetEmployees()
+                                              from program in emp.Programming
+                                              select program;
+            Console.WriteLine("Query Syntax");
+            foreach (var emp in QuerySyntax)
+            {
+                Console.Write($"{emp} ");
+            }
+            Console.WriteLine("\n");
+            Console.WriteLine("Method Syntax");
+            foreach (var emp in MethodSyntax)
+            {
+                Console.Write($"{emp} ");
+            }
         }
     }
     public class Employee
@@ -148,12 +169,12 @@
         {
             List<Employee> employees = new()
             {
-                new() {ID = 101, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 100000, Programming = new List<string> { "C++", "C#", "Python" } },
-                new() {ID = 102, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 200000, Programming = new List<string> { "C++", "C#", "Python" } },
-                new() {ID = 103, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> { "C++", "C#", "Python" } },
-                new() {ID = 104, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 400000, Programming = new List<string> { "C++", "C#", "Python" } },
-                new() {ID = 105, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 500000, Programming = new List<string> { "C++", "C#", "Python" } },
-                new() {ID = 106, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 600000, Programming = new List<string> { "C++", "C#", "Python" } }
+                new() {ID = 101, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 100000, Programming = new List<string> { "C++", "C#", "Java" } },
+                new() {ID = 102, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 200000, Programming = new List<string> { "Flutter", "C#", "Python" } },
+                new() {ID = 103, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 300000, Programming = new List<string> { "Python", "C#", "C++" } },
+                new() {ID = 104, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 400000, Programming = new List<string> { "Go", "C#", "C" } },
+                new() {ID = 105, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 500000, Programming = new List<string> { "Java Script", "Git", "Python" } },
+                new() {ID = 106, FirstName = "Dilshod", LastName = "Dilshodov", Salary = 600000, Programming = new List<string> { "Database", "C#", "PHP" } }
                 };
             return employees;
         }
