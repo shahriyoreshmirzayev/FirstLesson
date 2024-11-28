@@ -10,7 +10,7 @@
             //SelectCalculation();
             //SelectMany();
             //SelectManyExample();
-            SelectManyComplex();
+            //SelectManyComplex();
         }
         public static void Select()
         {
@@ -172,6 +172,19 @@
             foreach (var emp in MethodSyntax)
             {
                 Console.WriteLine(emp.Employeename + " => " + emp.ProgrammName);
+            }
+            //Using Query Syntax
+            var QuerySyntax = (from emp in Employee.GetEmployees()
+                               from program in emp.Programming
+                               select new
+                               {
+                                   EmployeeName = emp.FirstName + "  " + emp.LastName,
+                                   ProgrammName = program
+                               }).ToList();
+            Console.WriteLine("Query Syntax");
+            foreach (var emp in QuerySyntax)
+            {
+                Console.WriteLine(emp.EmployeeName + " => " + emp.ProgrammName);
             }
         }
     }

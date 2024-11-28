@@ -13,7 +13,8 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        LINQ_first_lesson.Start();
+        OrderBYAmaliyot.OrderBY();
+        //LINQ_first_lesson.Start();
     }
     static void LinqLesson()
     {
