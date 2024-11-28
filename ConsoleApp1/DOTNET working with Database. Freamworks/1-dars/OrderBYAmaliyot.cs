@@ -73,7 +73,7 @@
         public static void OrderByDescendingStudents()
         {
             //Method Syntax
-            var MethodSyntax = Student.GetAllStudents().OrderByDescending(x => x).ToList();
+            var MethodSyntax = Student.GetAllStudents().OrderByDescending(x => x.Branch).ToList();
             Console.WriteLine("Method Syntax Descending");
             foreach(var number in MethodSyntax)
             {
@@ -82,7 +82,7 @@
 
             //Query Syntax
             var QuerySyntax = (from std in Student.GetAllStudents()
-                               orderby std descending
+                               orderby std.Branch descending
                                select std);
             Console.WriteLine("Query Syntax Descending");
             foreach( var number in QuerySyntax)
