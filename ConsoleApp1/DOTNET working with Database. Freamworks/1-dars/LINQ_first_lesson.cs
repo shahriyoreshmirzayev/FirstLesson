@@ -7,7 +7,8 @@
             //Select();
             //SelectFewProperties();
             //SelectAnonymousType();
-            SelectCalculation();
+            //SelectCalculation();
+            SelectMany();
         }
         public static void Select()
         {
@@ -97,13 +98,43 @@
                                {
                                    Employee_ID = emp.ID,
                                    FullName = emp.FirstName + "  " + emp.LastName,
-                                   AnnualSalary = emp.Salary,
+                                   AnnualSalary = emp.Salary * 12,
                                });
             Console.WriteLine("Query Syntax");
-            foreach(var emp in selectQuery)
+            foreach (var emp in selectQuery)
             {
-                Console.WriteLine($"ID: {emp.Employee_ID} Name : {emp.FullName}, Salary : {emp.AnnualSalary}");
+                Console.WriteLine($"ID: {emp.Employee_ID} Name : {emp.FullName}, Annual Salary : {emp.AnnualSalary}");
             }
+
+
+
+            //Method Syntax
+            var selectMethod = Employee.GetEmployees()
+                .Select(emp => new
+                {
+                    Employee_ID = emp.ID,
+                    FullName = emp.FirstName + "  " + emp.LastName,
+                    AnnualSalary = emp.Salary * 12
+                }).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach( var emp in selectMethod)
+            {
+                Console.WriteLine($"ID :{emp.Employee_ID}, Name : {emp.FullName}, Annual Salary {emp.AnnualSalary}");
+            }
+        }
+        public static void SelectMany()
+        {
+            List<string> nameList = new List<string>() { "Dilshod", "Shodiyev" };
+
+            IEnumerable<char> querySyntax = from str in nameList
+                                            from ch in str
+                                            select ch;
+
+            foreach (var ch in querySyntax)
+            {
+                Console.Write($"{ch} ");
+            }
+
         }
     }
     public class Employee
