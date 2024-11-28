@@ -5,7 +5,9 @@
         public static void OrderBY()
         {
             //OrderBy_Amaliyot_1();
-            OrderByStudents();
+            //OrderByStudents();
+            //OrderByDescending();
+            OrderByDescendingStudents();
         }
         public static void OrderBy_Amaliyot_1()
         {
@@ -38,14 +40,55 @@
                 Console.WriteLine("Branch: " + number.Branch + ", Name: " + number.Name + ", Age: " + number.Age + ", Male: " + number.Gender + ", ID: " + number.ID);
             }
             //Query Syntax
-            /*Console.WriteLine("Query Syntax");
+            Console.WriteLine("Query Syntax");
             var QuerySyntax = (from std in Student.GetAllStudents()
-                               orderby std.Branch
+                               orderby std.Name
                                select std);
             foreach (var number in QuerySyntax)
             {
                 Console.WriteLine("Branch: " + number.Branch + ", Name: " + number.Name + ", Gender: " + number.Gender + ", Age: " + number.Age + ", ID: " + number.ID);
-            }*/
+            }
+        }
+        public static void OrderByDescending()
+        {
+            List<int> intList = new List<int>() { 10, 23, 4565, 989, 984, 95, 12, 979487, 454, 86, 97, 23, 52, 20 };
+
+            //Query Syntax
+            var QuerySyntax = (from number in intList
+                               orderby number descending
+                               select number).ToList();
+            Console.WriteLine("Query Syntax");
+            foreach (var number in QuerySyntax)
+            {
+                Console.Write($"{number} ");
+            }
+            //Method Syntax
+            var MethodSyntax = intList.OrderByDescending(x => x);
+            Console.WriteLine("Method Syntax");
+            foreach (var number in MethodSyntax)
+            {
+                Console.Write($"{number} ");
+            }
+        }
+        public static void OrderByDescendingStudents()
+        {
+            //Method Syntax
+            var MethodSyntax = Student.GetAllStudents().OrderByDescending(x => x).ToList();
+            Console.WriteLine("Method Syntax Descending");
+            foreach(var number in MethodSyntax)
+            {
+                Console.WriteLine("Branch: " + number.Gender + ", Name: " + number.Name + ", Age: " + number.Age);
+            }
+
+            //Query Syntax
+            var QuerySyntax = (from std in Student.GetAllStudents()
+                               orderby std descending
+                               select std);
+            Console.WriteLine("Query Syntax Descending");
+            foreach( var number in QuerySyntax)
+            {
+                Console.WriteLine("Branch: " + number.Branch + ", Name: " + number.Name + ", Age: " + number.Age);
+            }
         }
     }
     public class Student
