@@ -9,7 +9,8 @@
             //SelectAnonymousType();
             //SelectCalculation();
             //SelectMany();
-            SelectManyExample();
+            //SelectManyExample();
+            SelectManyComplex();
         }
         public static void Select()
         {
@@ -155,6 +156,22 @@
             foreach (var emp in MethodSyntax)
             {
                 Console.Write($"{emp} ");
+            }
+        }
+        public static void SelectManyComplex()
+        {
+            //Using Method Syntax
+            var MethodSyntax = Employee.GetEmployees()
+                .SelectMany(std => std.Programming,
+                (emp, program) => new
+                {
+                    Employeename = emp.FirstName + "  " + emp.LastName,
+                    ProgrammName = program
+                }).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var emp in MethodSyntax)
+            {
+                Console.WriteLine(emp.Employeename + " => " + emp.ProgrammName);
             }
         }
     }
