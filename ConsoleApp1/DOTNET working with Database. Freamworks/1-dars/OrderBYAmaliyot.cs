@@ -7,7 +7,9 @@
             //OrderBy_Amaliyot_1();
             //OrderByStudents();
             //OrderByDescending();
-            OrderByDescendingStudents();
+            //OrderByDescendingStudents();
+            //ThenBy();
+            OrderbyComplex();
         }
         public static void OrderBy_Amaliyot_1()
         {
@@ -86,6 +88,53 @@
                                select std);
             Console.WriteLine("Query Syntax Descending");
             foreach( var number in QuerySyntax)
+            {
+                Console.WriteLine("Branch: " + number.Branch + ", Name: " + number.Name + ", Age: " + number.Age);
+            }
+        }
+        public static void ThenBy()
+        {
+            // Using Method Syntax
+            var MethoddSyntax = Student.GetAllStudents().
+                OrderBy(x => x.Name).
+                ThenBy(x => x.Age)
+                .ToList();
+            Console.WriteLine("Methos Syntax ThenBy");
+            foreach (var number in MethoddSyntax)
+            {
+                Console.WriteLine("Name: " + number.Name + ", Age: " + number.Age);
+            }
+            //Using Query Syntax
+            var QuerySyntax = (from std in Student.GetAllStudents()
+                               orderby std.Name, std.Age
+                               select std);
+            Console.WriteLine("Query Syntax ThenBy");
+            foreach(var number in QuerySyntax)
+            {
+                Console.WriteLine("Name: " + number.Name + ", Age: " + number.Age);
+            }
+        }
+        public static void OrderbyComplex()
+        {
+            //Using Method Query
+            var MS = Student.GetAllStudents().
+                OrderBy(x => x.Name)
+                .ThenBy(y => y.Age)
+                .ThenByDescending(z => z.Gender)
+                .ToList();
+            Console.WriteLine("Method Syntax");
+            foreach( var number in MS)
+            {
+                Console.WriteLine("Name: " + number.Name + ", Age: " + number.Age + ", Gender: " + number.Gender);
+            }
+            //Using Query Syntax
+            var QS = (from std in Student.GetAllStudents()
+                      orderby std.Branch ascending,
+                      std.Name ascending,
+                      std.Age descending
+                      select std).ToList();
+            Console.WriteLine("Query Syntax");
+            foreach (var number in QS)
             {
                 Console.WriteLine("Branch: " + number.Branch + ", Name: " + number.Name + ", Age: " + number.Age);
             }
