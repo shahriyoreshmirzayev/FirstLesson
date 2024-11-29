@@ -8,7 +8,9 @@
             //WhereWithMethod();
             //WhereWithIndexPosition();
             //WhereWithEmployee();
-            WhereWithEmployee2();
+            //WhereWithEmployee2();
+            OfType();
+            OfTypeString();
         }
         public static void Where()
         {
@@ -140,24 +142,60 @@
                 .ToList();
 
             Console.WriteLine("Query Syntax");
-            foreach (var item in querySyntax )
+            foreach (var item in querySyntax)
             {
                 Console.WriteLine($"Salary: {item.Salary}, Name: {item.FirstName}");
                 foreach (var programm in item.Programming)
                 {
-                    Console.Write($"{programm} ");
+                    Console.WriteLine($"{programm} ");
                 }
             }
             Console.WriteLine("\n\n\nMethod Syntax");
-            foreach(var item in methodSyntax)
+            foreach (var item in methodSyntax)
             {
                 Console.WriteLine($"Salary: {item.Salary}, Name: {item.FirstName}");
                 foreach (var programm in item.Programming)
                 {
-                    Console.Write($"{programm} ");
+                    Console.WriteLine($"{programm} ");
                 }
             }
-            Console.ReadKey ();
+            Console.ReadKey();
+        }
+        public static void OfType()
+        {
+            List<object> objectList = new List<object>()
+            {
+                "Ahad", "Qayum", "C#", "PDP", 2024, 12, "Najot Ta'lim", "Azamat", "Dodge Charger", 571
+            };
+            List<int> intList = objectList.OfType<int>().ToList();
+            foreach (var item in intList)
+            {
+                Console.WriteLine($"INT tipidagi sonlar: {item}");
+            }
+        }
+        public static void OfTypeString()
+        {
+            List<object> objectList = new List<object>()
+            {
+                "Ahad", "Qayum", "C#", "PDP", 2024, 12, "Najot Ta'lim", "Azamat", "Dodge Charger", 571
+            };
+            //Method Syntax
+            var stringList = objectList.OfType<string>().ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var item in stringList)
+            {
+                Console.WriteLine($"String types: {item}");
+            }
+            //Query Syntax
+            var stringListQuery = (from name in objectList
+                                   where name is string
+                                   select name).ToList();
+            Console.WriteLine("Query Syntax");
+            foreach (var item in stringListQuery)
+            {
+                Console.WriteLine($"String types: {item}");
+            }
+            Console.Read();
         }
     }
 }
