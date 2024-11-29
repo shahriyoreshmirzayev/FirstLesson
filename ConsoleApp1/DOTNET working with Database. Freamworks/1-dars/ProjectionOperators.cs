@@ -1,11 +1,14 @@
-﻿namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
+﻿using NCalc;
+
+namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
 {
     public static class ProjectionOperators
     {
         public static void Start()
         {
             //Where();
-            WhereWithMethod();
+            //WhereWithMethod();
+            WhereWithIndexPosition();
         }
         public static void Where()
         {
@@ -33,14 +36,14 @@
         public static void WhereWithMethod()
         {
             List<int> intList = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            
+
             //Method Syntax
-            //IEnumerable<int> filterData = intList.Where(x => CheckNumber(x));
-            //Console.WriteLine("Method Syntax");
-            //foreach (int i in filterData)
-            //{
-            //    Console.WriteLine($"{i}");
-            //}
+            IEnumerable<int> filterData = intList.Where(x => CheckNumber(x));
+            Console.WriteLine("Method Syntax");
+            foreach (int i in filterData)
+            {
+                Console.WriteLine($"{i}");
+            }
 
             //Query Syntax
             IEnumerable<int> filterDataM = (from num in intList
@@ -64,6 +67,42 @@
             {
                 return false;
             }
+        }
+        public static void WhereWithIndexPosition()
+        {
+            List<int> intList = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            //Method Syntax
+            var MethodSyntaxPosition = intList.Select((num, index) => new
+            {
+                Numbers = num,
+                IndexPosition = index
+            }).Where(x => x.Numbers % 2 == 1)
+            .Select(data => new
+            {
+                Number = data.Numbers,
+                IndexPosition = data.IndexPosition
+            });
+            Console.WriteLine("Method Syntax");
+            foreach (var item in MethodSyntaxPosition)
+            {
+                Console.WriteLine($"Index: {item.IndexPosition} => Number: {item.Number}");
+            }
+
+
+            //Query Syntax
+            var QuerySyntaxPosition = (from number in intList.Select((num, index) => new { Numbers = num, IndexPosition = index })
+                                       where number.Numbers % 2 == 0
+                                       select new
+                                       {
+                                           Numbers = number.Numbers,
+                                           IndexPosition = number.IndexPosition
+                                       });
+            Console.WriteLine("Query Syntax");
+            foreach (var item in QuerySyntaxPosition)
+            {
+                Console.WriteLine($"Index :{item.IndexPosition} => Number: {item.Numbers}");
+            }
+            Console.ReadKey();
         }
     }
 }
