@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
 {
-    class OrderBYAmaliyot
+    public static class OrderBYAmaliyot
     {
         public static void OrderBY()
         {
@@ -10,7 +10,7 @@
             //OrderByDescendingStudents();
             //ThenBy();
             //OrderbyComplex();
-            ReversegaOidAmaliyot();
+            //ReversegaOidAmaliyot();
         }
         public static void OrderBy_Amaliyot_1()
         {
