@@ -1,6 +1,4 @@
-﻿using NCalc;
-
-namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
+﻿namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
 {
     public static class ProjectionOperators
     {
@@ -8,7 +6,9 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
         {
             //Where();
             //WhereWithMethod();
-            WhereWithIndexPosition();
+            //WhereWithIndexPosition();
+            //WhereWithEmployee();
+            WhereWithEmployee2();
         }
         public static void Where()
         {
@@ -103,6 +103,61 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
                 Console.WriteLine($"Index :{item.IndexPosition} => Number: {item.Numbers}");
             }
             Console.ReadKey();
+        }
+        public static void WhereWithEmployee()
+        {
+            //Query Syntax
+            var querySyntax = from employee in Employee.GetEmployees()
+                              where employee.Salary > 10000 && employee.FirstName == "Dilshod"
+                              select employee;
+            Console.WriteLine("Query Syntax");
+            foreach (var item in querySyntax)
+            {
+                Console.WriteLine($"Name: {item.FirstName}, Salary: {item.Salary}");
+            }
+
+            //Method Syntax
+            var methodSyntax = Employee.GetEmployees()
+                .Where(emp => emp.Salary > 10000);
+            Console.WriteLine("Method Syntax");
+            foreach (var item in methodSyntax)
+            {
+                Console.WriteLine($"Name: {item.FirstName}, Surname: {item.LastName}, Salary: {item.Salary}");
+            }
+            Console.ReadLine();
+            Console.ReadKey();
+        }
+        public static void WhereWithEmployee2()
+        {
+            //Query Syntax
+            var querySyntax = from employee in Employee.GetEmployees()
+                              where employee.Salary > 15000 && employee.Programming.Contains("C#")
+                              select employee;
+
+            //Method Syntax
+            var methodSyntax = Employee.GetEmployees()
+                .Where(emp => emp.Salary > 15000 && emp.Programming.Contains("C#"))
+                .ToList();
+
+            Console.WriteLine("Query Syntax");
+            foreach (var item in querySyntax )
+            {
+                Console.WriteLine($"Salary: {item.Salary}, Name: {item.FirstName}");
+                foreach (var programm in item.Programming)
+                {
+                    Console.Write($"{programm} ");
+                }
+            }
+            Console.WriteLine("\n\n\nMethod Syntax");
+            foreach(var item in methodSyntax)
+            {
+                Console.WriteLine($"Salary: {item.Salary}, Name: {item.FirstName}");
+                foreach (var programm in item.Programming)
+                {
+                    Console.Write($"{programm} ");
+                }
+            }
+            Console.ReadKey ();
         }
     }
 }
