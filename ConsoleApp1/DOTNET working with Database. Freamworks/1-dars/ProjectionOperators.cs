@@ -9,8 +9,8 @@
             //WhereWithIndexPosition();
             //WhereWithEmployee();
             //WhereWithEmployee2();
-            OfType();
-            OfTypeString();
+            //OfType();
+            //OfTypeString();
         }
         public static void Where()
         {

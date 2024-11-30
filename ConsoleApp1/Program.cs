@@ -13,9 +13,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        ProjectionOperators.Start();
-        //OrderBYAmaliyot.OrderBY();
-        //LINQ_first_lesson.Start();
+        SetOperators.Start();
     }
     static void LinqLesson()
     {
