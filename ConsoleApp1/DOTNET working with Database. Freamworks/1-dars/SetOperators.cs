@@ -7,7 +7,9 @@
             //Distinct1();
             //Distinct2();
             //Distinct3();
-            Distinct4();
+            //Distinct4();
+
+            Except1();
         }
         public static void Distinct1()
         {
@@ -92,6 +94,21 @@
                 Console.WriteLine(student);
             }
             Console.ReadKey();     
+        }
+        public static void Except1()
+        {
+            List<int> intList1 = new List<int>() { 1, 2, 3, 4, 8, 9, 10 };
+            List<int> intList2 = new List<int>() { 1, 2, 3, 4, 5, 6 };
+
+            //Using Query Syntax
+            var querySyntax = (from student in intList1
+                               select student)
+                               .Except(intList2).ToList();
+            Console.WriteLine("Query Syntax");
+            foreach (var student in querySyntax)
+            {
+                Console.WriteLine(student);
+            }
         }
     }
 }
