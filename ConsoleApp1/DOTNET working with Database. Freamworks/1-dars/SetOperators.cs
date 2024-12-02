@@ -1,6 +1,8 @@
-﻿namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
 {
-    internal class SetOperators
+    public class SetOperators
     {
         public static void Start()
         {
@@ -10,7 +12,8 @@
             //Distinct4();
 
             //Except1();
-            Except2();
+            //Except2();
+            Exception3();
         }
         public static void Distinct1()
         {
@@ -82,7 +85,7 @@
                 .Select(x => x.Name)
                 .Distinct().ToList();
             Console.WriteLine("Method Syntax");
-            foreach(var student in methodSyntax)
+            foreach (var student in methodSyntax)
             {
                 Console.WriteLine(student);
             }
@@ -90,11 +93,11 @@
             var querySyntax = (from student in Student.GetAllStudents()
                                select student.Name).Distinct().ToList();
             Console.WriteLine("Query Syntax");
-            foreach( var student in querySyntax)
+            foreach (var student in querySyntax)
             {
                 Console.WriteLine(student);
             }
-            Console.ReadKey();     
+            Console.ReadKey();
         }
         public static void Except1()
         {
@@ -112,21 +115,22 @@
             }
             Console.ReadKey();
         }
-        public static void Except2() {
-            List<Student> AllStudents = new()
+        public static void Except2()
+        {
+            List<Student1> AllStudents = new()
             {
-                new Student { ID = 101, Name = "Xurshid" },
-                new Student { ID = 102, Name = "Jamol" },
-                new Student { ID = 103, Name = "Xojiakbar" },
-                new Student { ID = 104, Name = "Kamol" },
-                new Student { ID = 105, Name = "Olim" },
-                new Student { ID = 106, Name = "Adham" },
+                new Student1 { ID = 101, Name = "Xurshid" },
+                new Student1 { ID = 102, Name = "Jamol" },
+                new Student1 { ID = 103, Name = "Xojiakbar" },
+                new Student1 { ID = 104, Name = "Kamol" },
+                new Student1 { ID = 105, Name = "Olim" },
+                new Student1 { ID = 106, Name = "Adham" },
             };
-            List<Student> Class6Student = new()
+            List<Student1> Class6Student = new()
             {
-                new Student {ID = 102, Name = "Jamol" },
-                new Student {ID = 104, Name = "Kamol" },
-                new Student {ID = 105, Name = "Olim" }
+                new Student1 {ID = 102, Name = "Jamol" },
+                new Student1 {ID = 104, Name = "Kamol" },
+                new Student1 {ID = 105, Name = "Olim" }
             };
             //Method Syntax
             var methodSyntax = AllStudents.Except(Class6Student).ToList();
@@ -135,6 +139,57 @@
             {
                 Console.WriteLine($"Name: {student.Name}, ID => {student.ID}");
             }
+            //Query Syntax
+            var querySyntax = (from student in AllStudents
+                               select student)
+                               .Except(Class6Student).ToList();
+            Console.WriteLine("Query Syntax");
+            foreach (var student in querySyntax)
+            {
+                Console.WriteLine($"Name: {student.Name}, ID => {student.ID}");
+            }
+            Console.ReadKey();
+        }
+        public static void Exception3()
+        {
+            List<Student1> AllStudents = new()
+            {
+                new Student1 { ID = 101, Name = "Xurshid" },
+                new Student1 { ID = 102, Name = "Jamol" },
+                new Student1 { ID = 103, Name = "Xojiakbar" },
+                new Student1 { ID = 104, Name = "Kamol" },
+                new Student1 { ID = 105, Name = "Olim" },
+                new Student1 { ID = 106, Name = "Adham" },
+            };
+            List<Student1> Class6Student = new()
+            {
+                new Student1 {ID = 102, Name = "Jamol" },
+                new Student1 {ID = 104, Name = "Kamol" },
+                new Student1 {ID = 105, Name = "Olim" }
+            };
+            //Method Syntax
+            var methodSyntax = AllStudents.Except(Class6Student).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var student in methodSyntax)
+            {
+                Console.WriteLine($"Name: {student.Name}, ID: {student.ID}");
+            }
+            Console.Read();
+            //Query Syntax
+
+        }
+    }
+    public class Student1
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public bool Equals(Student? x, Student? y)
+        {
+            return NotImplementedException.Equals(x, y);
+        }
+        public int GetHashCode([DisallowNull] Student1 obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }
