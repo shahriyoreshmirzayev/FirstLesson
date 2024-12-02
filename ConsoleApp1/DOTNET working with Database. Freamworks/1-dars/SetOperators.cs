@@ -9,7 +9,8 @@
             //Distinct3();
             //Distinct4();
 
-            Except1();
+            //Except1();
+            Except2();
         }
         public static void Distinct1()
         {
@@ -107,7 +108,32 @@
             Console.WriteLine("Query Syntax");
             foreach (var student in querySyntax)
             {
-                Console.WriteLine(student);
+                Console.Write(student + "  ");
+            }
+            Console.ReadKey();
+        }
+        public static void Except2() {
+            List<Student> AllStudents = new()
+            {
+                new Student { ID = 101, Name = "Xurshid" },
+                new Student { ID = 102, Name = "Jamol" },
+                new Student { ID = 103, Name = "Xojiakbar" },
+                new Student { ID = 104, Name = "Kamol" },
+                new Student { ID = 105, Name = "Olim" },
+                new Student { ID = 106, Name = "Adham" },
+            };
+            List<Student> Class6Student = new()
+            {
+                new Student {ID = 102, Name = "Jamol" },
+                new Student {ID = 104, Name = "Kamol" },
+                new Student {ID = 105, Name = "Olim" }
+            };
+            //Method Syntax
+            var methodSyntax = AllStudents.Except(Class6Student).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var student in methodSyntax)
+            {
+                Console.WriteLine($"Name: {student.Name}, ID => {student.ID}");
             }
         }
     }
