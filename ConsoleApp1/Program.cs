@@ -13,7 +13,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        SetOperators.Start();
+        Quantify_Operators.Start();
     }
     static void LinqLesson()
     {
