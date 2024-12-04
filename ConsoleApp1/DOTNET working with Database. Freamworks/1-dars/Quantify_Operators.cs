@@ -8,7 +8,10 @@
             //All2();
 
             //Any1();
-            Any2();
+            //Any2();
+
+            //Contains1();
+            Contains2();
         }
         public static void All1()
         {
@@ -70,6 +73,43 @@
             Console.WriteLine("Query Syntax");
             Console.WriteLine("Massiv ichida uzunligi 5 dan katta bo'lgan ismlar bormi? " + querySyntax);
             Console.ReadKey();
+        }
+        public static void Contains1()
+        {
+            int[] intArray = { 11, 23, 48, 97, 64, 33, 12, 64, 36 };
+
+            //Using Method Syntax
+            var methodSyntax = intArray.Contains(33);
+            Console.WriteLine("Method Syntax");
+            Console.WriteLine($"Massiv ichida 33 soni bormi? {methodSyntax}");
+
+            //Using Query Syntax
+            var querySyntax = (from name in intArray
+                               select name).Contains(11).ToString();
+            Console.WriteLine("Query Syntax");
+            Console.WriteLine("Massiv ichida 11 soni bormi? " + querySyntax);
+            Console.ReadKey();
+        }
+        public static void Contains2()
+        {
+            List<string> listName = new List<string>() { "Asadbek", "Kamron", "Abdulloh", "Samariddin", "Ghost", "Anvar" };
+
+            //Using Method Syntax - 1
+            var methodSyntax = listName.Contains("Asadbek");
+            Console.WriteLine("Method Syntax - 1");
+            Console.WriteLine("Invalid is invalid " + methodSyntax.ToString());
+
+            //Using Method Syntax
+            var methodSyntax2 = listName.AsEnumerable().Contains("Asadbek");
+            Console.WriteLine("Method Syntax - 2");
+            Console.WriteLine("Invalis is invalid :" + methodSyntax.ToString());
+
+
+            //Using Query Syntax
+            var querySyntax = ( from name in listName
+                                select name).Contains("Asadbek").ToString();
+            Console.WriteLine("Query Syntax");
+            Console.WriteLine($"Invalid is invalid {querySyntax}");
         }
     }
 }
