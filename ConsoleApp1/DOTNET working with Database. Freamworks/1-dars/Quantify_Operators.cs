@@ -11,7 +11,7 @@
             //Any2();
 
             //Contains1();
-            Contains2();
+            //Contains2();
         }
         public static void All1()
         {
