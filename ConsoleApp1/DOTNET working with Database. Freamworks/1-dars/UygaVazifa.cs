@@ -8,7 +8,7 @@
         }
         public static void Condition1()
         {
-            var methodSyntax = Product.GetProducts().
+            var methodSyntax = Product.GetProducts();
         }
 
     }

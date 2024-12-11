@@ -13,7 +13,7 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars
 
             //Except1();
             //Except2();
-            //Exception3();
+            Exception3();
         }
         public static void Distinct1()
         {
