@@ -3,6 +3,7 @@ using ConsoleApp1._10_dars;
 using ConsoleApp1.Advanced._1_dars;
 using ConsoleApp1.Advanced._5_dars;
 using ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars;
+using ConsoleApp1.DOTNET_working_with_Database._Freamworks._2_dars;
 using System.Collections;
 using System.Diagnostics;
 using System.Text.Json;
@@ -13,7 +14,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        SetOperators.Start();
+        Groupping_Operators.Start();
     }
     static void LinqLesson()
     {

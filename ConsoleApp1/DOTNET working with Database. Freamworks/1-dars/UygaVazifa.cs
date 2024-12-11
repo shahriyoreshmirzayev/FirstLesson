@@ -10,7 +10,6 @@
         {
             var methodSyntax = Product.GetProducts();
         }
-
     }
     public class Product
     {
