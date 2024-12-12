@@ -1,11 +1,14 @@
 ﻿namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._2_dars
 {
-    internal class Groupping_Operators
+    class Groupping_Operators
     {
         public static void Start()
         {
             //GroupBy1();
-            GroupBy2();
+            //GroupBy2();
+            //GroupBy3();
+
+            GroupByInto1();
         }
         public static void GroupBy1()
         {
@@ -46,10 +49,10 @@
                     Students = std.OrderBy(c => c.Name)
                 });
             Console.WriteLine("Method Syntax");
-            foreach(var group in GroupMS)
+            foreach (var group in GroupMS)
             {
                 Console.WriteLine(group.Key + ":" + group.Students.Count());
-                foreach(var student in group.Students)
+                foreach (var student in group.Students)
                 {
                     Console.WriteLine("Name: " + student.Name + ", Age: " + student.Age + ", Gender: " + student.Gender);
                 }
@@ -73,19 +76,85 @@
                     Console.WriteLine($"Name: {student.Name}, Age: {student.Age}, Branch: {student.Branch}");
                 }
             }
-
         }
-    }
-    public class Student
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Gender { get; set; }
-        public string Branch { get; set; }
-        public int Age { get; set; }
-        public static List<Student> GetStudents()
+        public static void GroupBy3()
         {
-            return new List<Student>()
+            //Using Method Syntax
+            var GroupByMS = Student.GetStudents()
+                                   .GroupBy(s => s.Gender)
+                                   .OrderByDescending(c => c.Key)
+                                   .Select(std => new StudentGroup
+                                   {
+                                       Key = std.Key,
+                                       Students = std.OrderBy(x => x.Name).ToList()
+                                   });
+            Console.WriteLine("Metod Syntax");
+            foreach (var group in GroupByMS)
+            {
+                Console.WriteLine(group.Key + ": " + group.Students.Count());
+                foreach (var student in group.Students)
+                    Console.WriteLine($"Name: {student.Name}, Age: {student.Age}, Branch: {student.Branch}");
+            }
+
+            //Using Query Syntax
+            var GroupByQS = (from std in Student.GetStudents()
+                             group std by std.Gender into stdGroup
+                             orderby stdGroup.Key descending
+                             select new StudentGroup
+                             {
+                                 Key = stdGroup.Key,
+                                 Students = stdGroup.OrderBy(x => x.Name).ToList()
+                             });
+            Console.WriteLine("Query Syntax");
+            foreach (var group in GroupByQS)
+            {
+                Console.WriteLine(group.Key + ": " + group.Students.Count());
+                foreach (var student in group.Students)
+                {
+                    Console.WriteLine($"Name: {student.Name}, Age: {student.Age}, ID: {student.ID}");
+                }
+            }
+        }
+        public static void GroupByInto1()
+        {
+            //Using Query Syntax
+            var GroupByIntoQS = (from std in Student.GetStudents()
+                                 group std by new
+                                 {
+                                     std.Branch,
+                                     std.Gender
+                                 } into stdGroup
+                                 select new
+                                 {
+                                     Branch = stdGroup.Key.Branch,
+                                     Gender = stdGroup.Key.Gender,
+                                     Students = stdGroup.OrderBy(x => x.Name)
+                                 });
+            Console.WriteLine("Query Syntax");
+            foreach (var group in GroupByIntoQS)
+            {
+                Console.WriteLine($"Branch: {group.Branch}, Gender: {group.Gender}, No off Students = {group.Branch.Count()}");
+                foreach (var student in group.Students)
+                {
+                    Console.WriteLine($"ID: {student.ID}, Name: {student.Name}, Age: {student.Age}");
+                }
+            }
+        }
+        public class StudentGroup
+        {
+            public string Key { get; set; }
+            public List<Student> Students { get; set; }
+        }
+        public class Student
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
+            public string Gender { get; set; }
+            public string Branch { get; set; }
+            public int Age { get; set; }
+            public static List<Student> GetStudents()
+            {
+                return new List<Student>()
             {
                 new Student { ID = 1001, Name = "Alisher", Gender = "Male", Branch = "CSE", Age = 19 },
                 new Student { ID = 1002, Name = "Xadicha", Gender = "FeMale", Branch = "CSE", Age = 26 },
@@ -98,6 +167,7 @@
                 new Student { ID = 1009, Name = "Ilyos", Gender = "Male", Branch = "CSE", Age = 30 },
                 new Student { ID = 1010, Name = "Zufar", Gender = "Male", Branch = "ETC", Age = 18 },
             };
+            }
         }
     }
 }
