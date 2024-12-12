@@ -4,7 +4,8 @@
     {
         public static void Start()
         {
-            GroupBy1();
+            //GroupBy1();
+            GroupBy2();
         }
         public static void GroupBy1()
         {
@@ -21,10 +22,10 @@
             }
 
             //Using Query Syntax
-            IEnumerable<IGrouping<string,Student>> GroupByQS = (from std in Student.GetStudents()
-                                                                select std as Student).GroupBy(x => x.Branch);
+            IEnumerable<IGrouping<string, Student>> GroupByQS = (from std in Student.GetStudents()
+                                                                 select std as Student).GroupBy(x => x.Branch);
             Console.WriteLine("Query Syntax");
-            foreach(IGrouping<string, Student> group in GroupByQS)
+            foreach (IGrouping<string, Student> group in GroupByQS)
             {
                 Console.WriteLine(group.Key + ": " + group.Count());
                 foreach (var student in group)
@@ -32,6 +33,47 @@
                     Console.WriteLine($"Name: {student.Name}, Age: {student.Age}, Gender: {student.Gender}");
                 }
             }
+        }
+        public static void GroupBy2()
+        {
+            //Using Method Syntax
+            var GroupMS = Student.GetStudents()
+                .GroupBy(x => x.Gender)
+                .OrderByDescending(y => y.Key)
+                .Select(std => new
+                {
+                    Key = std.Key,
+                    Students = std.OrderBy(c => c.Name)
+                });
+            Console.WriteLine("Method Syntax");
+            foreach(var group in GroupMS)
+            {
+                Console.WriteLine(group.Key + ":" + group.Students.Count());
+                foreach(var student in group.Students)
+                {
+                    Console.WriteLine("Name: " + student.Name + ", Age: " + student.Age + ", Gender: " + student.Gender);
+                }
+            }
+
+            //Using Query Syntax
+            var GroupQS = (from std in Student.GetStudents()
+                           group std by std.Gender into stdGroup
+                           orderby stdGroup.Key descending
+                           select new
+                           {
+                               Key = stdGroup.Key,
+                               Students = stdGroup.OrderBy(c => c.Name)
+                           });
+            Console.WriteLine("\n\n\nQuery Syntax");
+            foreach (var group in GroupQS)
+            {
+                Console.WriteLine(group.Key + ":" + group.Students.Count());
+                foreach (var student in group.Students)
+                {
+                    Console.WriteLine($"Name: {student.Name}, Age: {student.Age}, Branch: {student.Branch}");
+                }
+            }
+
         }
     }
     public class Student
