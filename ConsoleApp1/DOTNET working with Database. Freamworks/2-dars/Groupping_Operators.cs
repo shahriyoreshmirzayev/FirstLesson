@@ -9,7 +9,8 @@
             //GroupBy3();
 
             //GroupByInto1();
-            GroupByInto2();
+            //GroupByInto2();
+            GroupByInto3();
         }
         public static void GroupBy1()
         {
@@ -187,6 +188,35 @@
                 }
             }
             Console.ReadKey();
+        }
+        public static void GroupByInto3()
+        {
+            //Using Method Syntax
+            var GroupMultileKeysMS = Student.GetStudents()
+                                    .GroupBy(x => new { x.Branch, x.Gender })
+                                    .OrderByDescending(g => g.Key.Branch)
+                                    .ThenBy(g => g.Key.Gender)
+                                    .Select(g => new StudentGroupByBranchGender
+                                    {
+                                        Branch = g.Key.Branch,
+                                        Gender = g.Key.Gender,
+                                        Students = g.OrderBy(x => x.Name).ToList()
+                                    });
+            Console.WriteLine("Method Syntax");
+            foreach (StudentGroupByBranchGender group in GroupMultileKeysMS)
+            {
+                Console.WriteLine($"Branch: {group.Branch} Gender: {group.Gender}, No of Srudents = {group.Gender.Count()}");
+                foreach(var student in group.Students)
+                {
+                    Console.WriteLine($"Name: {student.Name}, ID: {student.ID}, Branch: {student.Branch}");
+                }
+            }
+        }
+        public class StudentGroupByBranchGender
+        {
+            public string Branch { get; set; }
+            public string Gender { get; set; }
+            public List<Student> Students { get; set; }
         }
         public class StudentGroup
         {
