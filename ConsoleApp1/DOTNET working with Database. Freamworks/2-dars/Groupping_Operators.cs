@@ -8,7 +8,8 @@
             //GroupBy2();
             //GroupBy3();
 
-            GroupByInto1();
+            //GroupByInto1();
+            GroupByInto2();
         }
         public static void GroupBy1()
         {
@@ -140,6 +141,53 @@
                 }
             }
         }
+        public static void GroupByInto2()
+        {
+            //Using Method Syntax
+            var GroupByIntoMS = Student.GetStudents()
+                                       .GroupBy(x => new { x.Branch, x.Gender })
+                                       .OrderByDescending(g => g.Key.Gender)
+                                       .Select(g => new
+                                       {
+                                           Branch = g.Key.Branch,
+                                           Gender = g.Key.Gender,
+                                           Students = g.OrderBy(x => x.Name)
+                                       }).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var group in GroupByIntoMS)
+            {
+                Console.WriteLine($"Branch: {group.Branch}, Gender: {group.Gender}, No of students = {group.Gender.Count()}");
+                foreach (var student in group.Students)
+                {
+                    Console.WriteLine($"ID: {student.ID}, Name: {student.Name}, Age: {student.Age}");
+                }
+            }
+            //Using Query Syntax
+            var GroupByIntoQS = from student in Student.GetStudents()
+                                group student by new
+                                {
+                                    student.Branch,
+                                    student.Gender,
+                                } into stdGroup
+                                orderby stdGroup.Key.Branch descending,
+                                stdGroup.Key.Gender ascending
+                                select new
+                                {
+                                    Branch = stdGroup.Key.Branch,
+                                    Gender = stdGroup.Key.Gender,
+                                    Students = stdGroup.OrderBy(x => x.Name)
+                                };
+            Console.WriteLine("Query Syntax");
+            foreach (var group in GroupByIntoQS)
+            {
+                Console.WriteLine($"Branch: {group.Branch}, Gender: {group.Gender}, No of students = {group.Gender.Count()}");
+                foreach (var student in group.Students)
+                {
+                    Console.WriteLine($"ID: {student.ID}, Name: {student.Name}, Age: {student.Age}");
+                }
+            }
+            Console.ReadKey();
+        }
         public class StudentGroup
         {
             public string Key { get; set; }
@@ -155,18 +203,18 @@
             public static List<Student> GetStudents()
             {
                 return new List<Student>()
-            {
-                new Student { ID = 1001, Name = "Alisher", Gender = "Male", Branch = "CSE", Age = 19 },
-                new Student { ID = 1002, Name = "Xadicha", Gender = "FeMale", Branch = "CSE", Age = 26 },
-                new Student { ID = 1003, Name = "Hikmat", Gender = "Male", Branch = "ETC", Age = 18 },
-                new Student { ID = 1004, Name = "Dilnoza", Gender = "FeMale", Branch = "CSE", Age = 35 },
-                new Student { ID = 1005, Name = "Kamron", Gender = "Male", Branch = "ETC", Age = 17 },
-                new Student { ID = 1006, Name = "Madina", Gender = "FeMale", Branch = "CSE", Age = 23 },
-                new Student { ID = 1007, Name = "Zaynab", Gender = "FeMale", Branch = "ETC", Age = 24 },
-                new Student { ID = 1008, Name = "Mushtariy", Gender = "FeMale", Branch = "CSE", Age = 29 },
-                new Student { ID = 1009, Name = "Ilyos", Gender = "Male", Branch = "CSE", Age = 30 },
-                new Student { ID = 1010, Name = "Zufar", Gender = "Male", Branch = "ETC", Age = 18 },
-            };
+                {
+                    new Student { ID = 1001, Name = "Alisher", Gender = "Male", Branch = "CSE", Age = 19 },
+                    new Student { ID = 1002, Name = "Xadicha", Gender = "FeMale", Branch = "CSE", Age = 26 },
+                    new Student { ID = 1003, Name = "Hikmat", Gender = "Male", Branch = "ETC", Age = 18 },
+                    new Student { ID = 1004, Name = "Dilnoza", Gender = "FeMale", Branch = "CSE", Age = 35 },
+                    new Student { ID = 1005, Name = "Kamron", Gender = "Male", Branch = "ETC", Age = 17 },
+                    new Student { ID = 1006, Name = "Madina", Gender = "FeMale", Branch = "CSE", Age = 23 },
+                    new Student { ID = 1007, Name = "Zaynab", Gender = "FeMale", Branch = "ETC", Age = 24 },
+                    new Student { ID = 1008, Name = "Mushtariy", Gender = "FeMale", Branch = "CSE", Age = 29 },
+                    new Student { ID = 1009, Name = "Ilyos", Gender = "Male", Branch = "CSE", Age = 30 },
+                    new Student { ID = 1010, Name = "Zufar", Gender = "Male", Branch = "ETC", Age = 18 },
+                };
             }
         }
     }
