@@ -12,7 +12,8 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
 
             //TakeWithException();
 
-            TakeWhile1();
+            //TakeWhile1();
+            TakeWhile2();
         }
         public static void Take1()
         {
@@ -148,7 +149,6 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
                 Console.Write($"{num} ");
             }
             Console.WriteLine();
-
             //Using Query Syntax
             List<int> ReslutQS = (from num in numbers
                                   select num)
@@ -160,6 +160,31 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
                 Console.Write(num + " ");
             }
             Console.ReadLine();
+        }
+        public static void TakeWhile2()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
+            Console.Write("Sonni kiriting: ");
+            var a = int.Parse(Console.ReadLine());
+
+            //Using Method Syntax Qirovxon
+            var Qirovxon_Method_Syntax = numbers.Where(num => num < a).ToList();
+            Console.WriteLine("Qirovxon bo'yicha Method Syntax");
+            foreach (var x in Qirovxon_Method_Syntax)
+            {
+                Console.Write(x + " ");
+            }
+
+            //Using Query Syntax Oyxon
+            var Oyxon_Query_Syntax = (from x in numbers
+                                      select x)
+                                      .Where(num => num < a).ToList();
+            Console.WriteLine("\nOyxon bo'yicha Method Syntax");
+            foreach(var x in Oyxon_Query_Syntax)
+            {
+                Console.Write(x + " ");
+            }
+            Console.ReadKey();
         }
     }
     public class Employee
