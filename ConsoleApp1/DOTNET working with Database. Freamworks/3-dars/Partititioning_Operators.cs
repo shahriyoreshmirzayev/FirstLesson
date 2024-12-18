@@ -24,7 +24,8 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             //Skip4();
 
             //SkipWhile1();
-            SkipWhile2();
+            //SkipWhile2();
+            SkipWhile3();
         }
         public static void Take1()
         {
@@ -409,7 +410,7 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
                             select x).
                             SkipWhile(num => num < 5).ToList();
             //Using Method Syntax
-            var ReslutMS = numbers.SkipWhile(num => num < 8).ToList();
+            var ReslutMS = numbers.SkipWhile(num => num < 37).ToList();
             Console.WriteLine("Query Syntax");
             foreach (var x in ResultQS)
             {
@@ -417,6 +418,43 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             }
             Console.WriteLine("\nMethod Syntax");
             foreach (var x in ReslutMS)
+            {
+                Console.Write(x + " ");
+            }
+            Console.ReadKey();
+        }
+        public static void SkipWhile3()
+        {
+            List<string> name = new List<string>()
+            {
+                "Aziz",
+                "Sarvar",
+                "Jasur",
+                "Saidakbar",
+                "Joe",
+                "Pol",
+                "Laziz",
+                "Jo",
+                "Shahriyor",
+                "Azamat",
+                "Fotima",
+                "Mahliyo"
+            };
+            //Using Query Syntax
+            var ResultQS = (from x in name
+                            select x).
+                            SkipWhile(name => name.Length < 7).
+                            ToList();
+            Console.WriteLine("Query Syntax");
+            foreach (var x in ResultQS)
+            {
+                Console.Write(x + " ");
+            }
+            Console.WriteLine();
+            //Using Method Syntax
+            var ResultMS = name.SkipWhile(name => name.Length < 4).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var x in ResultMS)
             {
                 Console.Write(x + " ");
             }
