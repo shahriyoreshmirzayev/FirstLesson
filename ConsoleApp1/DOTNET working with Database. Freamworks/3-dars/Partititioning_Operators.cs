@@ -15,7 +15,15 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             //TakeWhile1();
             //TakeWhile2();
             //TakeWhile3();
-            TakeWhile4();
+            //TakeWhile4();
+            //TakeWhile5();
+
+            //Skip1();
+            //Skip2();
+            //Skip3();
+            //Skip4();
+
+            SkipWhile1();
         }
         public static void Take1()
         {
@@ -182,7 +190,7 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
                                       select x)
                                       .Where(num => num < a).ToList();
             Console.WriteLine("\nOyxon bo'yicha Method Syntax");
-            foreach(var x in Oyxon_Query_Syntax)
+            foreach (var x in Oyxon_Query_Syntax)
             {
                 Console.Write(x + " ");
             }
@@ -237,9 +245,155 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             //Using Query Syntax
             var ResultQS = (from x in name
                             select x)
-                            .TakeWhile(num =>num.Length > 3).ToList();
+                            .TakeWhile(num => num.Length > 3).ToList();
             Console.WriteLine("\nQuery Syntax");
-            foreach(var x in ResultQS)
+            foreach (var x in ResultQS)
+            {
+                Console.Write(x + " ");
+            }
+            Console.ReadKey();
+        }
+        public static void TakeWhile5()
+        {
+            List<string> names = new List<string>()
+            {
+                "Aziz",
+                "Sarvar",
+                "Jasur",
+                "Saidakbar",
+                "Joe",
+                "Pol",
+                "Laziz",
+                "Shahriyor",
+                "Azamat",
+                "Fotima",
+                "Mahliyo"
+            };
+
+            //Method Syntax
+            var ResultMS = names.TakeWhile((name, index) => name.Length > index).ToList();
+            var ResultQS = (from x in names
+                            select x).
+                            TakeWhile((name, index) => name.Length > index).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var x in ResultMS)
+            {
+                Console.Write(x + " ");
+            }
+            Console.WriteLine("\nQuery Syntax");
+            foreach (var x in ResultQS)
+            {
+                Console.Write(x + " ");
+            }
+            Console.ReadKey();
+        }
+        public static void Skip1()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
+            //Method Syntax
+            var ResultMS = numbers.Skip(4).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var x in ResultMS)
+            {
+                Console.Write(x + " ");
+            }
+
+            //Using Query Syntax
+            var ResultQS = (from x in numbers
+                            select x).Skip(4).ToList();
+            Console.WriteLine("\nQuery Syntax");
+            foreach (var x in ResultQS)
+            {
+                Console.Write(x + " ");
+            }
+        }
+        public static void Skip2()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
+            //Using Method Syntax
+            var ResultMS = numbers.Where(x => x > 4).Skip(4).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var x in ResultMS)
+            {
+                Console.Write(x + " ");
+            }
+            //Using Query Syntax
+            var ResultsQS = (from x in numbers
+                             select x).
+                             Where(num => num > 5).
+                             Skip(4).ToList();
+            Console.WriteLine("\nQuery Syntax");
+            foreach (var x in ResultsQS)
+            {
+                Console.Write(x + " ");
+            }
+            Console.ReadKey();
+        }
+        public static void Skip3()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
+            //Using Method Syntax
+            var ResultMS = numbers.Skip(7).Where(num => num > 4).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var x in ResultMS)
+            {
+                Console.Write(x + " ");
+            }
+            //Using Query Syntax
+            var ResultQS = (from x in numbers
+                            select x).
+                            Skip(5).
+                            Where(num => num > 6).
+                            ToList();
+            Console.WriteLine("\nQuery Syntax")  ;
+            foreach (var x in ResultQS)
+            {
+                Console.Write(x + " ");
+            }
+            Console.ReadKey();
+        }
+        public static void Skip4()
+        {
+            List<Employee> employees = Employee.GetEmployees();
+            //Using Method Syntax
+            var ResultMS = employees.OrderBy(emp => emp.Salary).Skip(5).ToList();
+            Console.WriteLine("Method SynTax");
+            foreach(var x in ResultMS)
+            {
+                Console.WriteLine($"Name: {x.Name}, ID: {x.ID}, Salary: {x.Salary}");
+            }
+
+            //Using Query Syntax
+            var ResultQS = (from emp in employees
+                            select emp).
+                            OrderBy(emp =>  emp.Salary)
+                            .Skip(2).
+                            ToList();
+            Console.WriteLine("Query Syntax");
+            foreach (var temp in ResultQS)
+            {
+                Console.WriteLine($"Name: {temp.Name}, ID: {temp.ID}, Gender: {temp.Gender}, Salary: {temp.Salary}");
+            }
+            Console.ReadKey();
+        }
+        public static void SkipWhile1()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
+            //Using Method Syntax
+            var ResultMS = numbers.SkipWhile(num => num < 5).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var x in ResultMS)
+            {
+                Console.Write(x + " ");
+            }
+
+            //Using Query Syntax
+            var ResultQS = ( from x in numbers
+                             select x).
+                             SkipWhile(num => num < 5).
+                             ToList();
+            Console.WriteLine("\nQuery Syntax");
+            foreach( var x in ResultQS)
             {
                 Console.Write(x + " ");
             }
