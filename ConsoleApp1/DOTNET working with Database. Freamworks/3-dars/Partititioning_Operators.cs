@@ -13,7 +13,9 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             //TakeWithException();
 
             //TakeWhile1();
-            TakeWhile2();
+            //TakeWhile2();
+            //TakeWhile3();
+            TakeWhile4();
         }
         public static void Take1()
         {
@@ -181,6 +183,63 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
                                       .Where(num => num < a).ToList();
             Console.WriteLine("\nOyxon bo'yicha Method Syntax");
             foreach(var x in Oyxon_Query_Syntax)
+            {
+                Console.Write(x + " ");
+            }
+            Console.ReadKey();
+        }
+        public static void TakeWhile3()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 36, 4, 21, 6, 10, 8, 9, 5, 11, 12, 45, 23, 18, 16, 14, 18 };
+
+            //Using Method Syntax
+            var ResultMS = numbers.TakeWhile(num => num < 4).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var x in ResultMS)
+            {
+                Console.Write(x + " ");
+            }
+
+            //Using Query Syntax
+            var ResultQS = (from x in numbers
+                            select x).TakeWhile(num => num < 4).ToList();
+            Console.WriteLine("\nQuery Syntax");
+            foreach (var x in ResultQS)
+            {
+                Console.Write(x + " ");
+            }
+            Console.ReadKey();
+        }
+        public static void TakeWhile4()
+        {
+            List<string> name = new List<string>()
+            {
+                "Aziz",
+                "Sarvar",
+                "Jasur",
+                "Saidakbar",
+                "Joe",
+                "Pol",
+                "Laziz",
+                "Shahriyor",
+                "Azamat",
+                "Fotima",
+                "Mahliyo"
+            };
+            //Method Syntax
+            var ResultMS = name.TakeWhile(num => num.Length > 3).ToList();
+            Console.WriteLine("Method Syntax");
+            foreach (var x in ResultMS)
+            {
+                Console.Write(x + " ");
+            }
+
+            //Using Query Syntax
+            var ResultQS = (from x in name
+                            select x)
+                            .TakeWhile(num =>num.Length > 3).ToList();
+            Console.WriteLine("\nQuery Syntax");
+            foreach(var x in ResultQS)
             {
                 Console.Write(x + " ");
             }
