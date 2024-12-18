@@ -25,7 +25,8 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
 
             //SkipWhile1();
             //SkipWhile2();
-            SkipWhile3();
+            //SkipWhile3();
+            SkipWhile4();
         }
         public static void Take1()
         {
@@ -460,6 +461,41 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             }
             Console.ReadKey();
         }
+        public static void SkipWhile4()
+        {
+            List<string> name = new List<string>()
+            {
+                "Aziz",
+                "Sarvar",
+                "Jasur",
+                "Saidakbar",
+                "Joe",
+                "Pol",
+                "Laziz",
+                "Shahriyor",
+                "Azamat",
+                "Fotima",
+                "Mahliyo"
+            };
+            //Using Query Syntax
+            var ResultQS = (from x in name
+                            select x).
+                            SkipWhile((name, Index) => name.Length > Index).
+                            ToList();
+            Console.WriteLine("Query Syntax");
+            foreach(var x in ResultQS)
+            {
+                Console.Write(x + " ");
+            }
+            //Using Method Syntax
+            var ResultMS = name.SkipWhile((name, index) =>  name.Length > index).ToList();
+            Console.WriteLine("\nMethod Syntax");
+            foreach( var x in ResultMS)
+            {
+                Console.Write(x + " ");
+            }
+            Console.ReadKey();
+        }
     }
     public class Employee
     {
@@ -486,4 +522,5 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
         //    throw new NotImplementedException();
         //}
     }
+
 }
