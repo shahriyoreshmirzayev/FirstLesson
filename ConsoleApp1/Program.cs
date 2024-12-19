@@ -15,7 +15,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Equality_Operators.Start();
+        Element_Operators.Start();
     }
     static void LinqLesson()
     {
