@@ -11,7 +11,8 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
         public static void Start()
         {
             //Equals1();
-            Equals2();
+            //Equals2();
+            Equal();
         }
         public static void Equals1()
         {
@@ -58,6 +59,43 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             {
                 Console.WriteLine(result);
             }
+            Console.Read();
+        }
+        public static void ReferenceEquals()
+        {
+            Product product = Product.GetProducts()[0];
+            Product stul = new Product()
+            {
+                ProductID = product.ProductID,
+                ProductName = product.ProductName
+            };
+            Console.WriteLine($"Product: {product.ProductName}, ID: {product.ProductID}");
+            Console.WriteLine($"Stull: {stul.ProductName}, ID {stul.ProductID}");
+            Console.WriteLine("Stull Equals: " + object.ReferenceEquals(stul, product));
+
+
+            product = Product.GetProducts()[0];
+            var referenceEqualsProducts = (from pro in Product.GetProducts()
+                                           where ReferenceEquals(pro.ProductName, product.ProductName)
+                                           select pro).ToList();
+            referenceEqualsProducts.ForEach(p => Console.WriteLine(p.ProductName));
+        }
+        public static void Equal()
+        {
+            Product product = Product.GetProducts()[0];
+            Product stul = new Product()
+            {
+                ProductID = product.ProductID,
+                ProductName = product.ProductName
+            };
+            Console.WriteLine(stul == product);
+
+            var referencesEquals = (from pro in Product.GetProducts()
+                                    where pro.ProductName == product.ProductName
+                                    select pro).ToList();
+            referencesEquals.ForEach(p => Console.WriteLine(product.ProductName));
+
+            Console.Read();
         }
     }
     public class Product
