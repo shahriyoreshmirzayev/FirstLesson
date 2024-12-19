@@ -15,7 +15,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Partititioning_Operators.Start();
+        Equality_Operators.Start();
     }
     static void LinqLesson()
     {
