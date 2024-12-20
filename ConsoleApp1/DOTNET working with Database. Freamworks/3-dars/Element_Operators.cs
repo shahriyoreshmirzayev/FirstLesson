@@ -77,17 +77,24 @@
             //Using Method Syntax
             var ResultMS = numbers.DefaultIfEmpty();
             foreach (var item in ResultMS)
-            {
-                Console.Write($"{item} ");
-            }
+            //{
+            //    Console.Write($"{item} ");
+            //}
             Console.WriteLine("\n\n");
             //Using Query Syntax
             var ResultQS = (from num in numbers
                             select num).DefaultIfEmpty().ToList();
-            foreach (var item in ResultQS)
+            //foreach (var item in ResultQS)
+            //{
+            //    Console.Write(item + " ");
+            //}
+            IEnumerable<Employee>? MethodSyntax = Employee.GetEmployees().DefaultIfEmpty().ToList();
+            foreach(Employee item in MethodSyntax)
             {
-                Console.Write(item + " ");
+                Console.WriteLine(item);
             }
+
+
             Console.Read();
         }
     }
@@ -101,10 +108,10 @@
             return new List<Students>()
             {
                 new Students  { Id = 1, Name = "Asad1", Department = "IT" },
-                //new Students  { Id = 2, Name = "Asad2", Department = "HR" },
-                //new Students  { Id = 3, Name = "Asad3", Department = "IT" },
-                //new Students  { Id = 4, Name = "Asad4", Department = "IT" },
-                //new Students  { Id = 5, Name = "Asad5", Department = "HR" }
+                new Students  { Id = 2, Name = "Asad2", Department = "HR" },
+                new Students  { Id = 3, Name = "Asad3", Department = "IT" },
+                new Students  { Id = 4, Name = "Asad4", Department = "IT" },
+                new Students  { Id = 5, Name = "Asad5", Department = "HR" }
             };
         }
     }
