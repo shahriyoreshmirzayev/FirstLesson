@@ -9,7 +9,8 @@
             //First();
             //Last();
 
-            Single();
+            //Single();
+            Default();
         }
         public static void ElementAt()
         {
@@ -66,9 +67,28 @@
         }
         public static void Single()
         {
-            Employee? MethodSyntax = Employee.GetEmployees().SingleOrDefault(emp => emp.Name == "Asad1");
+            Employee? MethodSyntax = Employee.GetEmployees().SingleOrDefault(emp => emp.ID == 2, new Employee { Name = "Dilshod" });
             Console.WriteLine(MethodSyntax);
             Console.ReadKey();
+        }
+        public static void Default()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 };
+            //Using Method Syntax
+            var ResultMS = numbers.DefaultIfEmpty();
+            foreach (var item in ResultMS)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine("\n\n");
+            //Using Query Syntax
+            var ResultQS = (from num in numbers
+                            select num).DefaultIfEmpty().ToList();
+            foreach (var item in ResultQS)
+            {
+                Console.Write(item + " ");
+            }
+            Console.Read();
         }
     }
     public class Students
@@ -81,10 +101,10 @@
             return new List<Students>()
             {
                 new Students  { Id = 1, Name = "Asad1", Department = "IT" },
-                new Students  { Id = 2, Name = "Asad2", Department = "HR" },
-                new Students  { Id = 3, Name = "Asad3", Department = "IT" },
-                new Students  { Id = 4, Name = "Asad4", Department = "IT" },
-                new Students  { Id = 5, Name = "Asad5", Department = "HR" }
+                //new Students  { Id = 2, Name = "Asad2", Department = "HR" },
+                //new Students  { Id = 3, Name = "Asad3", Department = "IT" },
+                //new Students  { Id = 4, Name = "Asad4", Department = "IT" },
+                //new Students  { Id = 5, Name = "Asad5", Department = "HR" }
             };
         }
     }
