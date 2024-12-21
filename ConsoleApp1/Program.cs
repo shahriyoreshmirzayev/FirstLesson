@@ -15,7 +15,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Concatenation_Operators.Start();
+        Agreggation_Function.Start();
     }
     static void LinqLesson()
     {
