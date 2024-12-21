@@ -15,7 +15,9 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             //Max1();
             //Min1();
             //Average1();
-            Count1();
+            //Count1();
+            //Aggregate();
+            //Aggregate2();
         }
         public static void Sum1()
         {
@@ -77,5 +79,38 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             var ResiultMS = numbers.Count();
             Console.WriteLine("Count: " + ResiultMS);
         }
+        public static void Aggregate()
+        {
+            List<int> numbers = new List<int>() { 1, 5, 8, 18, 20 };
+            //Using Method syntax
+            int multiply = numbers.Aggregate(func:  (a, b) => a + b);
+            Console.WriteLine("Summa: " + multiply);
+
+            int koo = numbers.Aggregate((a, b) => a * b);
+            Console.WriteLine("Ko'paytma: " + koo);
+            //Using Query Syntax
+            var ResultQS_multiply = (from num in numbers
+                            select num).Aggregate(func: (a, b) =>  (a + b));
+
+            var ResultQS_koo = (from num in numbers
+                                select num).Aggregate(func: (a, b) => a * b);
+            Console.WriteLine("Query Syntax");
+            Console.WriteLine("Summa: " + ResultQS_multiply);
+            Console.WriteLine("Ko'paytma: " + ResultQS_koo);
+            Console.Read();
+        }
+        public static void Aggregate2()
+        {
+            List<int> numbers = new List<int>() { 1, 5, 8, 18, 20 };
+            //Method Syntax
+            var ResultMS = numbers.Aggregate(func: Add);
+            Console.WriteLine("Method Syntax: " + ResultMS);
+            //Query Syntax
+            var ResultQS = (from num in numbers
+                            select num).Aggregate(func: Add);
+            Console.WriteLine("Query Syntax: " + ResultQS);
+            Console.Read();
+        }
+        public static int Add(int a, int b) { return a - b; }
     }
 }

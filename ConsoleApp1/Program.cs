@@ -15,7 +15,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Agreggation_Function.Start();
+        Generation_Operators.Start();
     }
     static void LinqLesson()
     {
