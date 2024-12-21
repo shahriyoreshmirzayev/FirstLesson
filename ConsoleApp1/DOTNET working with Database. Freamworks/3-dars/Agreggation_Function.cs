@@ -13,7 +13,8 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
         {
             //Sum1();
             //Max1();
-            Min1();
+            //Min1();
+            Average1();
         }
         public static void Sum1()
         {
@@ -50,6 +51,18 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             var ResultMS = numbers.Min();
             Console.WriteLine("Min numbers: " + ResultMS );
             Console.ReadKey();
+        }
+        public static void Average1()
+        {
+            int[] numbers = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160 };
+            //Using Query Syntax
+            var ResultQS = (from num in numbers
+                            select num).Average();
+            Console.WriteLine("O'rtacha qiymat: " + ResultQS );
+
+            //Using Method Syntax
+            var ResiultMS = numbers.Average();
+            Console.WriteLine($"O'rtacha qiymat: {ResiultMS}");
         }
     }
 }
