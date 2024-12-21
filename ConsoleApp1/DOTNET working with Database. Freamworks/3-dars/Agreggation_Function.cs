@@ -14,7 +14,8 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             //Sum1();
             //Max1();
             //Min1();
-            Average1();
+            //Average1();
+            Count1();
         }
         public static void Sum1()
         {
@@ -63,6 +64,18 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
             //Using Method Syntax
             var ResiultMS = numbers.Average();
             Console.WriteLine($"O'rtacha qiymat: {ResiultMS}");
+        }
+        public static void Count1()
+        {
+            int[] numbers = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160 };
+            //Query Syntax
+            var ResultQS = (from num in numbers
+                            select num).Count();
+            Console.WriteLine($"Count: " + ResultQS);
+
+            //Method Syntax
+            var ResiultMS = numbers.Count();
+            Console.WriteLine("Count: " + ResiultMS);
         }
     }
 }
