@@ -11,7 +11,7 @@
             //WhereWithEmployee2();
             //OfType();
             //OfTypeString();
-            WhereWithEmployee();
+            //WhereWithEmployee();
         }
         public static void Where()
         {
@@ -116,7 +116,7 @@
             Console.WriteLine("Query Syntax");
 
 
-            //querySyntax.ForEach(item => Console.WriteLine($"Name: {item.FirstName}, Salary: {item.Salary}"));
+            querySyntax.ForEach(item => Console.WriteLine($"Name: {item.FirstName}, Salary: {item.Salary}"));
 
 
 
@@ -127,13 +127,13 @@
             }
 
             //Method Syntax
-            /*var methodSyntax = Employee.GetEmployees().Where(emp => emp.Salary > 10000);
+            var methodSyntax = Employee.GetEmployees().Where(emp => emp.Salary > 10000);
             Console.WriteLine("Method Syntax");
             foreach (var item in methodSyntax)
             {
                 Console.WriteLine($"Name: {item.FirstName}, Surname: {item.LastName}, Salary: {item.Salary}");
             }
-            Console.ReadLine();*/
+            Console.ReadLine();
             Console.ReadKey();
         }
         public static void WhereWithEmployee2()

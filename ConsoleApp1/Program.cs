@@ -5,6 +5,7 @@ using ConsoleApp1.Advanced._5_dars;
 using ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars;
 using ConsoleApp1.DOTNET_working_with_Database._Freamworks._2_dars;
 using ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars;
+using ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_darss;
 using System.Collections;
 using System.Diagnostics;
 using System.Text.Json;
@@ -15,7 +16,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        ProjectionOperators.Start();
+        Join_Operators.Start();
     }
     static void LinqLesson()
     {

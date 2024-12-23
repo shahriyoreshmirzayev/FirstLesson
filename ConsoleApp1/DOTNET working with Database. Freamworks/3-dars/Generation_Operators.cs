@@ -9,7 +9,7 @@
             //Range1();
             //Range2();
             //Range3();
-            Repeat();
+            //Repeat();
         }
         public static void Empty1()
         {
