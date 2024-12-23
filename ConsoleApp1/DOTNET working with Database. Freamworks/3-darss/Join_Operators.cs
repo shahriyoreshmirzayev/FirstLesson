@@ -4,18 +4,64 @@
     {
         public static void Start()
         {
-            InnerJoinMethodSyntax();
+            //InnerJoinMethodSyntax();
+            //InnerJoinQuerySyntax();
+            //InnerJoinMethodSyntax1();
+            JoinMultibleDatabaseQS();
+
+
         }
-        public static void InnerJoinMethodSyntax()
+        public static void JoinMultibleDatabaseQS()
         {
-            var ResultMS = Employee.GetAllEmployes().
-                           Join(Address.GetAllAddresses(),
+            var ResultQS = (from emp in Employee.GetEmployes()
+                            join adrs in Address.GetAddresses()
+                            on emp.AddressID equals adrs.ID
+
+                            join dept in Department.GetDepartments()
+                            on emp.DepartmentID equals dept.ID
+
+                            select new
+                            {
+                                ID = emp.ID,
+                                EmployeeName = emp.Name,
+                                DepartmentName = dept.Name,
+                                AddressLine = adrs.AddressLine,
+                            }).ToList();
+
+            Console.WriteLine("Query Syntax");
+            foreach (var item in ResultQS)
+            {
+                Console.WriteLine($"Name: {item.EmployeeName}");
+            }
+        }
+        public static void InnerJoinMethodSyntax1()
+        {
+            var ResultMS = Employee.GetEmployes()
+                           .Join(Address.GetAddresses(),
                            employee => employee.AddressID,
                            address => address.ID,
                            (employee, address) => new
                            {
                                EmployeeName = employee.Name,
-                               AddressLine = address.AddressLine,  
+                               AddressLine = address.AddressLine,
+                           }).ToList();
+
+            // Natijani chiqarish
+            ResultMS.ForEach(employee => Console.WriteLine($"Name: {employee.EmployeeName}, Address: {employee.AddressLine}"));
+
+            Console.ReadKey();
+        }
+
+        public static void InnerJoinMethodSyntax()
+        {
+            var ResultMS = Employee.GetEmployes()
+                           .Join(Address.GetAddresses(),
+                           employee => employee.AddressID,
+                           address => address.ID,
+                           (employee, address) => new
+                           {
+                               EmployeeName = employee.Name,
+                               AddressLine = address.AddressLine,
                            }).ToList();
 
             ResultMS.ForEach(employee => Console.WriteLine($"Name: {employee.EmployeeName}, Address: {employee.AddressLine}"));
@@ -25,17 +71,32 @@
             }
             Console.ReadKey();
         }
+        public static void InnerJoinQuerySyntax()
+        {
+            var ResultQS = (from emp in Employee.GetEmployes()
+                            join address in Address.GetAddresses()
+                            on emp.AddressID equals address.ID
+                            select new
+                            {
+                                EmployeeName = emp.Name,
+                                AddressLine = address.AddressLine,
+                            });
+            foreach (var item in ResultQS)
+            {
+                Console.WriteLine($"Name: {item.EmployeeName}, Address: {item.AddressLine}");
+            }
+            Console.ReadKey();
+        }
     }
-}
-public class Employee
-{
-    public int ID { get; set; }
-    public string Name { get; set; }
-    public int AddressID { get; set; }
-    public int DepartmentID { get; set; }
-    public static List<Employee> GetAllEmployes()
+    public class Employee
     {
-        return new List<Employee>()
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int AddressID { get; set; }
+        public int DepartmentID { get; set; }
+        public static List<Employee> GetEmployes()
+        {
+            return new List<Employee>()
         {
             new Employee() { ID = 1, Name = "Maftuna", AddressID = 101, DepartmentID = 1 },
             new Employee() { ID = 2, Name = "Asad", AddressID = 110, DepartmentID = 2 },
@@ -48,15 +109,15 @@ public class Employee
             new Employee() { ID = 9, Name = "Javlon", AddressID = 108, DepartmentID = 1 },
             new Employee() { ID = 10, Name = "Kamron", AddressID = 109, DepartmentID = 2 }
         };
+        }
     }
-}
-public class Address
-{
-    public int ID { get; set; }
-    public string AddressLine { get; set; }
-    public static List<Address> GetAllAddresses()
+    public class Address
     {
-        return new List<Address>()
+        public int ID { get; set; }
+        public string AddressLine { get; set; }
+        public static List<Address> GetAddresses()
+        {
+            return new List<Address>()
         {
             new Address() { ID = 1, AddressLine = "AddressLine1" },
             new Address() { ID = 2, AddressLine = "AddressLine2" },
@@ -69,20 +130,21 @@ public class Address
             new Address() { ID = 9, AddressLine = "AddressLine9" },
             new Address() { ID = 10, AddressLine = "AddressLine10" }
         };
+        }
     }
-}
-public class Department
-{
-    public int ID { get; set; }
-    public string Name { get; set; }
-    public static List<Department> GetAllDepartments()
+    public class Department
     {
-        return new List<Department>()
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public static List<Department> GetDepartments()
         {
+            return new List<Department>()
+            {
             new Department() { ID = 1, Name = "IT" },
             new Department() { ID = 2, Name = "HR" },
             new Department() { ID = 3, Name = "Teamlead" },
             new Department() { ID = 4, Name = "Security" }
-        };
+            };
+        }
     }
 }
