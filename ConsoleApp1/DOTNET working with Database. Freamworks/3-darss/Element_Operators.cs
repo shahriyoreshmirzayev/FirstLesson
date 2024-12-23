@@ -19,7 +19,7 @@
             //Using Method Syntax
             var ResultMS = numbers.ElementAt(4);
 
-            //Using Method Syntax
+            //Using Query Syntax
             var ResultQS = (from num in numbers
                             select num).
                             ElementAt(4);

@@ -15,7 +15,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Generation_Operators.Start();
+        ProjectionOperators.Start();
     }
     static void LinqLesson()
     {
