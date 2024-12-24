@@ -16,7 +16,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Join_Operators.Start();
+        CustomSequence_Operators.SequncesEqual();
     }
     static void LinqLesson()
     {
