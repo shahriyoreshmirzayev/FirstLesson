@@ -6,17 +6,19 @@ using ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars;
 using ConsoleApp1.DOTNET_working_with_Database._Freamworks._2_dars;
 using ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars;
 using ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_darss;
+using ConsoleApp1.DOTNET_working_with_Database._Freamworks._4_dars;
 using System.Collections;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
+using Npgsql;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        CustomSequence_Operators.Start();
+        Data_Provieders.Start();
     }
     static void LinqLesson()
     {

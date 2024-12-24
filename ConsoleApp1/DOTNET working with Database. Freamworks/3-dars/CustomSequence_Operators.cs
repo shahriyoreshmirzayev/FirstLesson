@@ -7,10 +7,10 @@
             //SequncesEqual();
             //SequncesEqual1();
             //SequncesEqualWithReferences();
-            SequncesEqualWithReferences1();
+            //SequncesEqualWithReferences1();
         }
         public static void SequncesEqual()
-        {
+        { 
             List<string> list1 = new List<string>() { "Paris", "Dubai", "Hyderabad" };
             List<string> list2 = new List<string>() { "Paris", "Dubai", "Hyderabad" };
 

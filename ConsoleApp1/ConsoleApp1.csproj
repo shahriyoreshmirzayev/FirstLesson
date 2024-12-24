@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="CoreCLR-NCalc" Version="3.1.253" />
+    <PackageReference Include="Npgsql" Version="9.0.2" />
   </ItemGroup>
 
 </Project>
