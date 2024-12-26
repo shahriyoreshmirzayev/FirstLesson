@@ -1,4 +1,6 @@
 ﻿using Npgsql;
+using System.Data.SqlTypes;
+
 
 namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._4_dars
 {
@@ -6,20 +8,21 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._4_dars
     {
         public static void Start()
         {
-            Connection();
+            //Connection();
             //Database_Table();
             //      - postgres
             //      - mydb1
             //      - todoapp
-            
+
         }
+        public SqlCommand deletecommand { get; set; }
+
         public static void Connection()
         {
             string connection_str = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=postgres;";
             using (NpgsqlConnection connection = new NpgsqlConnection(connection_str))
             {
                 connection.Open();
-
                 Console.WriteLine("Database learning");
                 connection.Close();
             }
@@ -54,5 +57,27 @@ namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._4_dars
                 Console.WriteLine($"Xatolik yuz berdi: {ex.Message}");
             }
         }
+        public IList<IList<int>> Generate(int numRows)
+        {
+            var result = new List<IList<int>>();
+
+            for (var i = 0; i < numRows; i++)
+            {
+                var shax = new List<int>();
+                shax.Add(1);
+
+                for (var j = 1; j < i; j++)
+                {
+                    int value = result[i - 1][j - 1] + result[i - 1][j];
+                    shax.Add(value);
+                }
+
+                if (i > 0) shax.Add(1);
+                result.Add(shax);
+            }
+
+            return result;
+        }
+        
     }
 }
