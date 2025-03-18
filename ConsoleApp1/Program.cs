@@ -2,23 +2,30 @@
 using ConsoleApp1._10_dars;
 using ConsoleApp1.Advanced._1_dars;
 using ConsoleApp1.Advanced._5_dars;
-using ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars;
-using ConsoleApp1.DOTNET_working_with_Database._Freamworks._2_dars;
 using ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars;
-using ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_darss;
-using ConsoleApp1.DOTNET_working_with_Database._Freamworks._4_dars;
 using System.Collections;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-using Npgsql;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        Data_Provieders.Start();
+        int a = 3; int b = 5, c= 6;
+      
+    }
+    
+
+
+
+    static void Masala1()
+    {
+        int a = 2, b = 3;
+        a = b++ + ++b;
+        b = a-- - --b;
+        Console.WriteLine($"a: {a}, b: {b}");
     }
     static void LinqLesson()
     {

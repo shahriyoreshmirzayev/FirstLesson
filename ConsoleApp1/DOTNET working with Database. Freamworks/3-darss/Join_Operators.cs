@@ -37,7 +37,7 @@
         public static void InnerJoinMethodSyntax1()
         {
             var ResultMS = Employee.GetEmployes()
-                           .Join(Address.GetAddresses(),
+                          .Join(Address.GetAddresses(),
                            employee => employee.AddressID,
                            address => address.ID,
                            (employee, address) => new
@@ -48,7 +48,7 @@
 
             // Natijani chiqarish
             ResultMS.ForEach(employee => Console.WriteLine($"Name: {employee.EmployeeName}, Address: {employee.AddressLine}"));
-
+            
             Console.ReadKey();
         }
 
