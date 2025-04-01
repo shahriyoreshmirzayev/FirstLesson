@@ -14,12 +14,7 @@ internal class Program
     static void Main(string[] args)
     {
         int a = 3; int b = 5, c= 6;
-      
     }
-    
-
-
-
     static void Masala1()
     {
         int a = 2, b = 3;
