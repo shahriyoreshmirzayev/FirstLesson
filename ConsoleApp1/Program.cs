@@ -2,18 +2,37 @@
 using ConsoleApp1._10_dars;
 using ConsoleApp1.Advanced._1_dars;
 using ConsoleApp1.Advanced._5_dars;
-using ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars;
 using System.Collections;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
+using YoutubeExplode;
 
 internal class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
-        int a = 3; int b = 5, c= 6;
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+
+        var youtube = new YoutubeClient();
+
+        // Bu yerga siz URL tashlaysiz
+        string url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+
+        var video = await youtube.Videos.GetAsync(url);
+
+        Console.WriteLine($"Sarlavha: {video.Title}");
+        Console.WriteLine($"Kanal: {video.Author.ChannelTitle}");
+        Console.WriteLine($"Ko‘rishlar: {video.Engagement.ViewCount}");
+        Console.WriteLine($"Yuklangan sana: {video.UploadDate}");
+        Console.WriteLine($"Davomiylik: {video.Duration}");
+        Console.WriteLine($"Thumbnail: {video.Thumbnails[0].Url}");
+
+        stopwatch.Stop();
+
+        Console.WriteLine($"⏱ Funksiya bajarilishi uchun ketgan vaqt: {stopwatch.Elapsed.TotalMilliseconds} ms");
     }
     static void Masala1()
     {
