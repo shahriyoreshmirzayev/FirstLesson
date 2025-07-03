@@ -13,6 +13,7 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
+
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.Start();
 
