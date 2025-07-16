@@ -22,7 +22,7 @@ public class GITASavollar
         //For9();
         //For10();
         //For11();
-        For12();
+        //For12();
         //For13();
         //For14();
         //For15();
@@ -32,7 +32,7 @@ public class GITASavollar
         //For19();
         //For20();
         //For21();
-        //For22();
+        For22();
         //For23();
         //For24();
         //For25();
@@ -230,7 +230,7 @@ public class GITASavollar
         Console.Write("Enter number(b): ");
         int b = Convert.ToInt32(Console.ReadLine());
         int count = 0;
-        for(int i = a; i <= b; i++)
+        for (int i = a; i <= b; i++)
         {
             count += i;
         }
@@ -256,7 +256,7 @@ public class GITASavollar
         Console.Write("Enter number(b): ");
         int b = Convert.ToInt32(Console.ReadLine());
         int multi = 0;
-        for(int i = a; i <= b; i++)
+        for (int i = a; i <= b; i++)
         {
             multi += i * i;
         }
@@ -267,7 +267,7 @@ public class GITASavollar
         Console.Write("Enter number(n): ");
         double n = Convert.ToInt32(Console.ReadLine());
         double count = 0;
-        for(double i = 1; i <= n; i++)
+        for (double i = 1; i <= n; i++)
         {
             count += 1 / i;
         }
@@ -278,7 +278,7 @@ public class GITASavollar
         Console.Write("Enter number(n): ");
         int n = Convert.ToInt32(Console.ReadLine());
         int count = 0;
-        for(int i = n; i <= 2 * n; i++)
+        for (int i = n; i <= 2 * n; i++)
         {
             count += i * i;
         }
@@ -289,7 +289,7 @@ public class GITASavollar
         Console.Write("Enter number(n): ");
         double n = Convert.ToDouble(Console.ReadLine());
         double multi = 1;
-        for(double i = 1.1; i <= n; i += 0.1)
+        for (double i = 1.1; i <= n; i += 0.1)
         {
             multi *= i;
         }
@@ -321,19 +321,49 @@ public class GITASavollar
     }
     public void For19()
     {
-
+        Console.Write("Enter number(n): ");
+        int n = Convert.ToInt32(Console.ReadLine());
+        int multi = 1;
+        for (int i = 1; i <= n; i++)
+        {
+            multi *= i;
+        }
+        Console.WriteLine($"Natija: {multi}");
     }
     public void For20()
     {
-
+        Console.Write("Enter number(n:) ");
+        int count = 0, multi = 1, n = Convert.ToInt32(Console.ReadLine());
+        for (int i = 1; i <= n; i++)
+        {
+            multi *= i;
+            count += multi;
+        }
+        Console.WriteLine($"Natija: {count}");
     }
     public void For21()
     {
-
+        Console.Write("Enter number(n:)  ");
+        float multi = 1, count = 1, n = float.Parse(Console.ReadLine());
+        for (int i = 1; i <= n; i++)
+        {
+            multi *= i;
+            count += 1 / multi;
+        }
+        Console.WriteLine($"Natija: {count}");
     }
     public void For22()
     {
-
+        Console.Write("Enter number(n:) ");
+        float count = 1, multi = 1, n = float.Parse(Console.ReadLine());
+        Console.Write("Enter number(x:) ");
+        float x = float.Parse(Console.ReadLine());
+        for (int i = 1; i <= n; i++)
+        {
+            multi *= i;
+            count += x / multi;
+        }
+        Console.WriteLine($"Natija: {count}");
     }
     public void For23()
     {
