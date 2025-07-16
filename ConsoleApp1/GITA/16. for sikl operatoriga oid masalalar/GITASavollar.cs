@@ -27,12 +27,12 @@ public class GITASavollar
         //For14();
         //For15();
         //For16();
-        //For17();
+        For17();
         //For18();
         //For19();
         //For20();
         //For21();
-        For22();
+        //For22();
         //For23();
         //For24();
         //For25();
@@ -297,23 +297,66 @@ public class GITASavollar
     }
     public void For13()
     {
-
+        Console.Write("Enter number(n): ");
+        int n = Convert.ToInt32(Console.ReadLine());
+        double count = 0, multi = 1; 
+        for(int i = 1; i <= n; i++)
+        {
+            count += multi * 1.0 * i;
+            multi = -1;
+        }
+        Console.WriteLine($"Natija: {count}");
     }
     public void For14()
     {
-
+        Console.Write("Enter number(n): ");
+        int n = Convert.ToInt32(Console.ReadLine()), count = 0, multi = 1;  //2n-1
+        for(int i = 1; i <= n; i++)
+        {
+            multi *= 2 * i - 1; 
+            count += multi;
+            multi = 1;
+        }
+        Console.WriteLine($"Natija: {count}");
     }
     public void For15()
     {
-
+        Console.Write("Enter number(daraja: n): ");
+        int n = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter number(son: a): ");
+        int a = Convert.ToInt32(Console.ReadLine());
+        int multi = 1;
+        for (int i = 1; i <= n; i++)
+        {
+            multi *= a;
+        }
+        Console.WriteLine($"{a} ning {n}-darajasi: {multi}");
     }
     public void For16()
     {
-
+        Console.Write("Enter number(daraja: n): ");
+        int n = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter number(son: a): ");
+        int a = int.Parse(Console.ReadLine());
+        for (int i = 1; i <= n; i++)
+        {
+            double natija = Math.Pow(a, i);
+            Console.WriteLine($"{a} ning {i}-darajasi: {natija}");
+        }
     }
     public void For17()
     {
-
+        Console.Write("Enter number(a): ");
+        int a = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter daraja(n): ");
+        int n = Convert.ToInt32(Console.ReadLine());
+        int count = 1, multi = 1;
+        for(int i = 1; i <= n; i++)
+        {
+            multi *= a;
+            count += multi;
+        }
+        Console.WriteLine($"Natija: {count}");
     }
     public void For18()
     {
