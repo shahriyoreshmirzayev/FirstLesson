@@ -410,7 +410,7 @@ public class GITASavollar
     }
     public void For23()
     {
-
+        Console.WriteLine();
     }
     public void For24()
     {
