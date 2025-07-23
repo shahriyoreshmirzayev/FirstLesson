@@ -3,6 +3,7 @@ using ConsoleApp1._1_dars;
 using ConsoleApp1._10_dars;
 using ConsoleApp1.Advanced._1_dars;
 using ConsoleApp1.Advanced._5_dars;
+using ConsoleApp1.GITA._20._Minimum_va_maksimumga_oid_masalalar;
 using System.Collections;
 using System.Diagnostics;
 using System.Text.Json;
@@ -14,9 +15,8 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        GITASavollar gITASavollar = new();
-        gITASavollar.Start();
-
+        GITAmasalalar vazifa = new();
+        vazifa.Start();
     }
     static void Masala1()
     {
