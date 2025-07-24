@@ -4,29 +4,116 @@ public class GITAmasalalar
 {
     public void Start()
     {
-        Minmax1();
+        //Minmax1();
+        //Masala8();
+        //Masala9();
+        //Masala10();
+        Masala11();
+    }
+    public void Masala8()
+    {
+        int n;
+        Console.Write("n = ");
+        n = int.Parse(Console.ReadLine());
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (j == 0 || j == n - 1 || i == n / 2)
+                {
+                    Console.Write("* ");
+                }
+                else
+                {
+                    Console.Write("  ");
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+    public void Masala9()
+    {
+        int n;
+        Console.Write("n = ");
+        n = int.Parse(Console.ReadLine());
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (i + j <= 2 || i + j >= 6 || i - j >= 2 || i - j <= -2)
+                {
+                    Console.Write("* ");
+                }
+                else
+                {
+                    Console.Write("  ");
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+    public void Masala10()
+    {
+        int n;
+        Console.Write("n = ");
+        n = int.Parse(Console.ReadLine());
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (!(i + j == 0 || i + j == 2 || i + j == 4 || i + j == 6 || i + j == 8))
+                {
+                    Console.Write("* ");
+                }
+                else
+                {
+                    Console.Write("  ");
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+    public void Masala11()
+    {
+        int n;
+        Console.Write("n = ");
+        n = int.Parse(Console.ReadLine());
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (i + j != 1 && i + j != 7 && i - j != 3 && i - j != -3)
+                {
+                    Console.Write("* ");
+                }
+                else
+                {
+                    Console.Write("  ");
+                }
+            }
+            Console.WriteLine();
+        }
     }
     public void Minmax1()
     {
-        Console.Write("n kiriting: ");
-        int n = Convert.ToInt32(Console.ReadLine());
-        int max = 0, min = 0;
-        int[] arr = new int[n];
-        for(int i = 0; i < n; i++)
+        int n;
+        n = int.Parse(Console.ReadLine());
+        for (int i = 0; i < n; i++)
         {
-            Console.Write($"{1+i}-sonni kiriting: ");
-            arr[i] = Convert.ToInt32(Console.ReadLine());
-            if(arr[i] > max )
+            for (int j = 0; j < n; j++)
             {
-                max = arr[i];
+                if (j == 0 || j == n - 1)
+                {
+                    Console.Write("* ");
+                }
+                else
+                {
+                    Console.Write("  ");
+                }
             }
-            if(arr[i] < min || i == 0)
-            {
-                min = arr[i];
-            }
+            Console.WriteLine();
         }
-        Console.WriteLine("Max number: " + max);
-        Console.WriteLine("Min number: " + min);
+
     }
 
 }
