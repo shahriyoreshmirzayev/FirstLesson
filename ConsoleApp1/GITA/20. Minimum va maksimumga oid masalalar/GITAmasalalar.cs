@@ -8,7 +8,8 @@ public class GITAmasalalar
         //Masala8();
         //Masala9();
         //Masala10();
-        Masala11();
+        //Masala11();
+        Masala12();
     }
     public void Masala8()
     {
@@ -93,6 +94,19 @@ public class GITAmasalalar
             }
             Console.WriteLine();
         }
+    }
+    public void Masala12()
+    {
+        for (int i = 0; i <= 100; i++)
+        {
+            double res = Math.Sqrt(i);
+            int butun = (int)res;
+            if (res == butun)
+            {
+                Console.Write(res + "  ");
+            }
+        }
+
     }
     public void Minmax1()
     {
