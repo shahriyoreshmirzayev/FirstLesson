@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp1.GITA._20._Minimum_va_maksimumga_oid_masalalar;
+﻿using Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal;
+
+namespace ConsoleApp1.GITA._20._Minimum_va_maksimumga_oid_masalalar;
 
 public class GITAmasalalar
 {
@@ -97,15 +99,20 @@ public class GITAmasalalar
     }
     public void Masala12()
     {
-        for (int i = 0; i <= 100; i++)
+        Console.Write("Enter word: ");
+        string str = Console.ReadLine();
+        for (int i = 0; i < str.Length; i++)
         {
-            double res = Math.Sqrt(i);
-            int butun = (int)res;
-            if (res == butun)
+            if (str[i] == 'a')
             {
-                Console.Write(res + "  ");
+                str = str.Remove(i, 1).Insert(i, "b");
+            }
+            else if (str[i] == 'b')
+            {
+                str = str.Remove(i, 1).Insert(i, "a");
             }
         }
+        Console.WriteLine(str);
 
     }
     public void Minmax1()
