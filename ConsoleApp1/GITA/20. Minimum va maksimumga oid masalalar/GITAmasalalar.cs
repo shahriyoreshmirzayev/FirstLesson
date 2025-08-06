@@ -11,7 +11,8 @@ public class GITAmasalalar
         //Masala9();
         //Masala10();
         //Masala11();
-        Masala12();
+        //Masala12();
+        Masala13();
     }
     public void Masala8()
     {
@@ -102,17 +103,35 @@ public class GITAmasalalar
         Console.Write("Enter word: ");
         string str = Console.ReadLine();
         for (int i = 0; i < str.Length; i++)
-        {
             if (str[i] == 'a')
-            {
                 str = str.Remove(i, 1).Insert(i, "b");
-            }
             else if (str[i] == 'b')
-            {
                 str = str.Remove(i, 1).Insert(i, "a");
+        Console.WriteLine(str);
+
+    }
+    public void Masala13()
+    {
+        Console.Write(" Enter any text ");
+        string word = Console.ReadLine();
+        string result = " ";
+
+        for (int i = 0; i < word.Length; i++)
+        {
+            if (word[i] == 'a')
+            {
+                result += 'b';
+            }
+            else if (word[i] == 'b')
+            {
+                result += 'a';
+            }
+            else
+            {
+                result += word[i];
             }
         }
-        Console.WriteLine(str);
+        Console.WriteLine(result);
 
     }
     public void Minmax1()
