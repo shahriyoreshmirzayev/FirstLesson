@@ -1,6 +1,4 @@
-﻿using Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal;
-
-namespace ConsoleApp1.GITA._20._Minimum_va_maksimumga_oid_masalalar;
+﻿namespace ConsoleApp1.GITA._20._Minimum_va_maksimumga_oid_masalalar;
 
 public class GITAmasalalar
 {
@@ -12,7 +10,20 @@ public class GITAmasalalar
         //Masala10();
         //Masala11();
         //Masala12();
-        Masala13();
+        //Masala13();
+        //Masala14();
+        Masala15();
+    }
+    public void Masala15()
+    {
+        for (int i = 5; i >= 1; i--)
+        {
+            for (int j = 0; j < 5 - i; j++)
+            {
+                Console.Write("  ");
+            }
+            Console.WriteLine(i);
+        }
     }
     public void Masala8()
     {
@@ -132,6 +143,11 @@ public class GITAmasalalar
             }
         }
         Console.WriteLine(result);
+
+    }
+    public void Masala14()
+    {
+
 
     }
     public void Minmax1()
