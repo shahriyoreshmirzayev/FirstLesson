@@ -12,7 +12,52 @@ public class GITAmasalalar
         //Masala12();
         //Masala13();
         //Masala14();
-        Masala15();
+        //Masala15();
+        //Masala16();
+        Masala195();
+    }
+    public void Masala195()
+    {
+        Console.Write("Enter str: ");
+        string str = Console.ReadLine();
+        int number1 = -1, number2 = -1, count = 0;
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (char.IsDigit(str[i])) 
+            {
+                count++;
+                if (count == 1)
+                {
+                    number1 = int.Parse(str[i].ToString());
+                }
+                else if (count == 2)
+                {
+                    number2 = int.Parse(str[i].ToString());
+                    break; 
+                }
+            }
+        }
+        Console.WriteLine(number1);
+        Console.WriteLine(number2);
+        for(int i = 1; i <= number1 * number2; i++)
+        {
+            if(i % number1 == 0 && i % number2 == 0)
+            {
+                Console.WriteLine(i);
+                break;
+            }
+        }
+    }
+    public void Masala16()
+    {
+        for(int i = 5; i >= 1; i--)
+        {
+            for(int j = 0; j < 5 - i; j++)
+            {
+                Console.Write("  ");
+            }
+            Console.WriteLine(i);
+        }
     }
     public void Masala15()
     {
@@ -22,6 +67,7 @@ public class GITAmasalalar
             {
                 Console.Write("  ");
             }
+
             Console.WriteLine(i);
         }
     }
