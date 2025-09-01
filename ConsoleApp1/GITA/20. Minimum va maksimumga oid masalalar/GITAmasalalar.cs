@@ -14,7 +14,7 @@ public class GITAmasalalar
         //Masala14();
         //Masala15();
         //Masala16();
-        Masala195();
+        //Masala195();
     }
     public void Masala195()
     {
