@@ -15,6 +15,43 @@ public class GITAmasalalar
         //Masala15();
         //Masala16();
         //Masala195();
+        Masala2();
+    }
+    public void Masala1()
+    {
+        int n = 5;
+        for (int i = 0; i < n; i++)
+        {
+            for(int j = 0; j < n; j++)
+            {
+                if (i >= j)
+                {
+                    Console.Write(j+n);
+                }
+                else
+                {
+                    Console.Write("  ");
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+    public void Masala2()
+    {
+        int n = 5;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j <= i; j++)
+            {
+                Console.Write(j + n);
+            }
+            for (int j = i + 1; j < n; j++)
+            {
+                Console.Write("  ");
+            }
+            Console.WriteLine();
+        }
+
     }
     public void Masala195()
     {
