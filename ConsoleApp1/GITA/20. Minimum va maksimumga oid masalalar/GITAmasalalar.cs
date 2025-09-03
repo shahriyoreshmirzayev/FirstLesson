@@ -15,18 +15,39 @@ public class GITAmasalalar
         //Masala15();
         //Masala16();
         //Masala195();
-        Masala2();
+        //Masala2();
+        Masala3();
+    }
+    public void Masala3()
+    {
+        Console.Write("Enter: ");
+        string str = Console.ReadLine(), str1 = "";
+        int count = 0;
+        for (int i = str.Length - 1; i >= 0; i--)
+        {
+            if (char.IsDigit(str[i]))
+            {
+                count += str[i] - '0';
+            }
+            if (char.IsLetter(str[i]))
+            {
+                str1 += str[i];
+            }
+
+        }
+        Console.WriteLine("Enter: " + count);
+        Console.WriteLine("Enter: " + str1);
     }
     public void Masala1()
     {
         int n = 5;
         for (int i = 0; i < n; i++)
         {
-            for(int j = 0; j < n; j++)
+            for (int j = 0; j < n; j++)
             {
                 if (i >= j)
                 {
-                    Console.Write(j+n);
+                    Console.Write(j + n);
                 }
                 else
                 {
@@ -60,7 +81,7 @@ public class GITAmasalalar
         int number1 = -1, number2 = -1, count = 0;
         for (int i = 0; i < str.Length; i++)
         {
-            if (char.IsDigit(str[i])) 
+            if (char.IsDigit(str[i]))
             {
                 count++;
                 if (count == 1)
@@ -70,15 +91,15 @@ public class GITAmasalalar
                 else if (count == 2)
                 {
                     number2 = int.Parse(str[i].ToString());
-                    break; 
+                    break;
                 }
             }
         }
         Console.WriteLine(number1);
         Console.WriteLine(number2);
-        for(int i = 1; i <= number1 * number2; i++)
+        for (int i = 1; i <= number1 * number2; i++)
         {
-            if(i % number1 == 0 && i % number2 == 0)
+            if (i % number1 == 0 && i % number2 == 0)
             {
                 Console.WriteLine(i);
                 break;
@@ -87,9 +108,9 @@ public class GITAmasalalar
     }
     public void Masala16()
     {
-        for(int i = 5; i >= 1; i--)
+        for (int i = 5; i >= 1; i--)
         {
-            for(int j = 0; j < 5 - i; j++)
+            for (int j = 0; j < 5 - i; j++)
             {
                 Console.Write("  ");
             }

@@ -293,7 +293,7 @@ public class GITASavollar
         {
             multi *= i;
         }
-        Console.WriteLine($"Natija: {multi}");
+        Console.WriteLine($"Natija: {multi}"); 
     }
     public void For13()
     {
