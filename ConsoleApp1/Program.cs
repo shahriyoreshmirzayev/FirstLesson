@@ -15,8 +15,8 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        GITAmasalalar vazifa = new();
-        vazifa.Start();
+        Class1 class1 = new Class1();
+        class1.Start();
     }
     static void Masala1()
     {
