@@ -15,8 +15,28 @@ internal class Program
 {
     static async Task Main(string[] args)
     {
-        Class1 class1 = new Class1();
-        class1.Start();
+        Person person = new Person();
+        person.Name = "Shahriyor Eshmirzayev";
+
+        int age = 15;
+        Test( person,ref age);
+        Console.WriteLine(person.Name);
+        Console.WriteLine(age);
+        Stack<int> stack = new Stack<int>();
+        Queue<int> queue = new Queue<int>();
+
+        /* Console.WriteLine(person.Name);
+        // var arry = person.Name.ToArray();
+         person.Name = "";
+         Console.WriteLine(person.Address.Country);
+         var arry2 = person.Name.ToArray();
+         Console.WriteLine(person.Age);*/
+    }
+
+    public static void Test( Person person, ref int age)
+    {
+        person.Name = "Islom";
+        age = 30;
     }
     static void Masala1()
     {
@@ -737,4 +757,24 @@ internal class Program
         int OxirgiBoshSatr = satr.LastIndexOf(' ');
         return satr.Substring(BirinchiBoshSatr + 1, OxirgiBoshSatr - BirinchiBoshSatr);
     }
+}
+
+class Person
+{
+    public Person()
+    {
+
+    }
+    public int GetAge()
+    {
+        return this.Age;
+    }
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public Address Address { get; set; }
+}
+class Address
+{
+    public string City { get; set; }
+    public string Country { get; set; }
 }
