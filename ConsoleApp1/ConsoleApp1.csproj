@@ -11,6 +11,7 @@
     <Folder Include="Advanced\7-dars\" />
     <Folder Include="Advanced\8-dars\" />
     <Folder Include="Advanced\NewFolder\" />
+    <Folder Include="Learning\" />
   </ItemGroup>
 
   <ItemGroup>
