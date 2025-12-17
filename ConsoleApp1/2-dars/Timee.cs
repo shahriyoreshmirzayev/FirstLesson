@@ -1,67 +1,66 @@
-﻿namespace ConsoleApp1._2_dars
+﻿namespace ConsoleApp1;
+
+internal class Timee
 {
-    internal class Timee
+    private int _hours;
+    private int _minutes;
+    private int _seconds;
+    public int Hour
     {
-        private int _hours;
-        private int _minutes;
-        private int _seconds;
-        public int Hour
+        get
         {
-            get
+            return _hours;
+        }
+        set
+        {
+            if (value > 0 && value < 25)
             {
-                return _hours;
+                _hours = value;
             }
-            set
+            else
             {
-                if (value > 0 && value < 25)
-                {
-                    _hours = value;
-                }
-                else
-                {
-                    Console.WriteLine("Soat vaqtini xato kiritdingiz");
-                }
+                Console.WriteLine("Soat vaqtini xato kiritdingiz");
             }
         }
-        public int Minutes
+    }
+    public int Minutes
+    {
+        get
         {
-            get
+            return _minutes;
+        }
+        set
+        {
+            if (value > 0 && _minutes < 61)
             {
-                return _minutes;
+                _minutes = value;
             }
-            set
+            else
             {
-                if (value > 0 && _minutes < 61)
-                {
-                    _minutes = value;
-                }
-                else
-                {
-                    Console.WriteLine("Daqiqani xato kiritdingiz");
-                }
+                Console.WriteLine("Daqiqani xato kiritdingiz");
             }
         }
-        public int Seconds
+    }
+    public int Seconds
+    {
+        get
         {
-            get
+            return _seconds;
+        }
+        set
+        {
+            if (value >= 0 && value < 61)
             {
-                return _seconds;
+                _seconds = value;
             }
-            set
+            else
             {
-                if (value >= 0 && value < 61)
-                {
-                    _seconds = value;
-                }
-                else
-                {
-                    Console.WriteLine("Bunday soniya yo'q xAto");
-                }
+                Console.WriteLine("Bunday soniya yo'q xAto");
             }
         }
-        public void MyTimes()
-        {
-            Console.WriteLine($"Vaqt {_hours:D2}:{_minutes:D2}:{_seconds:D2}");
-        }
-    }   
-}
+    }
+    public void MyTimes()
+    {
+        Console.WriteLine($"Vaqt {_hours:D2}:{_minutes:D2}:{_seconds:D2}");
+    }
+}   

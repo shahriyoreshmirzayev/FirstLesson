@@ -1,16 +1,11 @@
-﻿namespace ConsoleApp1._6_dars
+﻿namespace ConsoleApp1;
+
+class Lest
 {
-    class Lest
+    List<int> massiv { get; set; }
+
+    public void  sonlar()
     {
-        List<int> massiv { get; set; }
-
-        public void  sonlar()
-        {
-            massiv = new List<int>();
-        }
-        
-
-        
-       
-    }
+        massiv = new List<int>();
+    } 
 }

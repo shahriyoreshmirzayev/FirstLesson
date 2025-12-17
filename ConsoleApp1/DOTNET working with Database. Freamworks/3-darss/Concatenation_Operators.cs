@@ -1,6 +1,4 @@
-﻿using ConsoleApp1.DOTNET_working_with_Database._Freamworks._1_dars;
-
-namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._3_dars
+﻿namespace ConsoleApp1
 {
     internal class Concatenation_Operators
     {

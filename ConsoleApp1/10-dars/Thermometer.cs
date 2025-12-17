@@ -1,24 +1,23 @@
-﻿namespace ConsoleApp1._10_dars
-{
-    class Thermometer
-    {
-        private int maxTemperature;
-        public event EventHandler<EventArgs> OnTemperatureChanged = delegate { };
+﻿namespace ConsoleApp1;
 
-        public Thermometer(int maxTemperature)
+class Thermometer
+{
+    private int maxTemperature;
+    public event EventHandler<EventArgs> OnTemperatureChanged = delegate { };
+
+    public Thermometer(int maxTemperature)
+    {
+        this.maxTemperature = maxTemperature;
+    }
+    public int Temperature
+    {
+        set
         {
-            this.maxTemperature = maxTemperature;
-        }
-        public int Temperature
-        {
-            set
+            if (value > maxTemperature)
             {
-                if (value > maxTemperature)
-                {
-                    OnTemperatureChanged(this, new EventArgs());
-                }
+                OnTemperatureChanged(this, new EventArgs());
             }
         }
     }
 }
-        
+    

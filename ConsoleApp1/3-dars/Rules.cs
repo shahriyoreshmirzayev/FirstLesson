@@ -1,28 +1,27 @@
-﻿namespace ConsoleApp1._3_dars
+﻿namespace ConsoleApp1;
+
+internal class Rules
 {
-    internal class Rules
+    public virtual void  GroupRules()
     {
-        public virtual void  GroupRules()
-        {
-            Console.WriteLine("1.Guruhda doimo odob saqlang\n2.Kattalarni hurmat qiling");
-        }
+        Console.WriteLine("1.Guruhda doimo odob saqlang\n2.Kattalarni hurmat qiling");
     }
-    class MathRules : Rules
+}
+class MathRules : Rules
+{
+    public override void GroupRules()
     {
-        public override void GroupRules()
-        {
-            Console.WriteLine("===== Matematika guruh qoidalari ======");
-            base.GroupRules();
-            Console.WriteLine("3.Kuniga bittadan misol ishlab guruhga tashlash");
-        }
+        Console.WriteLine("===== Matematika guruh qoidalari ======");
+        base.GroupRules();
+        Console.WriteLine("3.Kuniga bittadan misol ishlab guruhga tashlash");
     }
-    class ProgrammingRules : Rules
+}
+class ProgrammingRules : Rules
+{
+    public override void GroupRules()
     {
-        public override void GroupRules()
-        {
-            Console.WriteLine("===== Programming guruh qoidalari =====");
-            base.GroupRules();
-            Console.WriteLine("3.Dasturlashdan boshqa chet mavzularda suhbatlashish ta'qiqlanadi");
-        }
+        Console.WriteLine("===== Programming guruh qoidalari =====");
+        base.GroupRules();
+        Console.WriteLine("3.Dasturlashdan boshqa chet mavzularda suhbatlashish ta'qiqlanadi");
     }
 }

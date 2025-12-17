@@ -1,43 +1,23 @@
-﻿using ConsoleApp1;
-using ConsoleApp1._1_dars;
-using ConsoleApp1._10_dars;
-using ConsoleApp1.Advanced._1_dars;
-using ConsoleApp1.Advanced._5_dars;
-using ConsoleApp1.GITA._20._Minimum_va_maksimumga_oid_masalalar;
-using System.Collections;
+﻿using System.Collections;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-using YoutubeExplode;
+
+namespace ConsoleApp1;
 
 internal class Program
 {
     static async Task Main(string[] args)
     {
-        Person person = new Person();
-        person.Name = "Shahriyor Eshmirzayev";
-
-        int age = 15;
-        Test( person,ref age);
-        Console.WriteLine(person.Name);
-        Console.WriteLine(age);
-        Stack<int> stack = new Stack<int>();
-        Queue<int> queue = new Queue<int>();
-
-        /* Console.WriteLine(person.Name);
-        // var arry = person.Name.ToArray();
-         person.Name = "";
-         Console.WriteLine(person.Address.Country);
-         var arry2 = person.Name.ToArray();
-         Console.WriteLine(person.Age);*/
+        Console.WriteLine("salom dunyoo");
     }
 
-    public static void Test( Person person, ref int age)
-    {
-        person.Name = "Islom";
-        age = 30;
-    }
+    //public static void Test(Person person, ref int age)
+    //{
+    //    person.Name = "Islom";
+    //    age = 30;
+    //}
     static void Masala1()
     {
         int a = 2, b = 3;
@@ -759,22 +739,22 @@ internal class Program
     }
 }
 
-class Person
-{
-    public Person()
-    {
+//class Person
+//{
+//    public Person()
+//    {
 
-    }
-    public int GetAge()
-    {
-        return this.Age;
-    }
-    public string Name { get; set; }
-    public int Age { get; set; }
-    public Address Address { get; set; }
-}
-class Address
-{
-    public string City { get; set; }
-    public string Country { get; set; }
-}
+//    }
+//    public int GetAge()
+//    {
+//        return this.Age;
+//    }
+//    public string Name { get; set; }
+//    public int Age { get; set; }
+//    public Address Address { get; set; }
+//}
+//class Address
+//{
+//    public string City { get; set; }
+//    public string Country { get; set; }
+//}

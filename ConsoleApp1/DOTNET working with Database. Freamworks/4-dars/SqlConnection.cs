@@ -1,12 +1,11 @@
-﻿namespace ConsoleApp1.DOTNET_working_with_Database._Freamworks._4_dars
-{
-    internal class SqlConnection
-    {
-        private string connectionString;
+﻿namespace ConsoleApp1;
 
-        public SqlConnection(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+internal class SqlConnection
+{
+    private string connectionString;
+
+    public SqlConnection(string connectionString)
+    {
+        this.connectionString = connectionString;
     }
 }

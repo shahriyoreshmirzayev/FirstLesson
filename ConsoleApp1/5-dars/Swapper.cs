@@ -1,12 +1,11 @@
-﻿namespace ConsoleApp1._5_dars
+﻿namespace ConsoleApp1;
+
+static class Swapper<T>
 {
-    static class Swapper<T>
+    public static void Swap(ref T a,ref T b)
     {
-        public static void Swap(ref T a,ref T b)
-        {
-            T temp = a;
-            a = b;
-            b = temp;
-        }
+        T temp = a;
+        a = b;
+        b = temp;
     }
 }

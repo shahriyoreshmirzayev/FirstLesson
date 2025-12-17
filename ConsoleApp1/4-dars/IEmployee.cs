@@ -1,8 +1,7 @@
-﻿namespace ConsoleApp1._4_dars
+﻿namespace ConsoleApp1;
+
+internal interface IEmployee
 {
-    internal interface IEmployee
-    {
-        void hire();
-        void fire();
-    }
+    void hire();
+    void fire();
 }

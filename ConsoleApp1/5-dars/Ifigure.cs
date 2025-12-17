@@ -1,7 +1,6 @@
-﻿namespace ConsoleApp1._5_dars
+﻿namespace ConsoleApp1;
+
+internal interface Ifigure
 {
-    internal interface Ifigure
-    {
-        void Figure();
-    }
+    void Figure();
 }

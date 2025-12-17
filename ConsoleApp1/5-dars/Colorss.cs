@@ -1,23 +1,20 @@
-﻿using System.Drawing;
+﻿namespace ConsoleApp1;
 
-namespace ConsoleApp1._5_dars
+class Colorss
 {
-    class Colorss
-    {
-        public Colors Rang { get; set; }
-    }
-    enum Colors
-    {
-        Qizil = 0,
-        Yashil,
-        Sariq,
-        Pushti,
-        Malla,
-        Qora,
-        Oq,
-        Kok,
-        Jigarrang,
-        Binafsha,
-        Zargaldoq
-    }
+    public Colors Rang { get; set; }
+}
+enum Colors
+{
+    Qizil = 0,
+    Yashil,
+    Sariq,
+    Pushti,
+    Malla,
+    Qora,
+    Oq,
+    Kok,
+    Jigarrang,
+    Binafsha,
+    Zargaldoq
 }

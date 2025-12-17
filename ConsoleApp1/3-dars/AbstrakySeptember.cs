@@ -1,18 +1,17 @@
-﻿namespace ConsoleApp1._3_dars
+﻿namespace ConsoleApp1;
+
+internal class AbstrakySeptember
 {
-    internal class AbstrakySeptember
+    public virtual void Speak()
     {
-        public virtual void Speak()
-        {
-            Console.WriteLine("Woow");
-        }
+        Console.WriteLine("Woow");
     }
-    class Cat : AbstrakySeptember
+}
+class Cat : AbstrakySeptember
+{
+    public override void Speak()
     {
-        public override void Speak()
-        {
-            //base.Speak();
-            Console.WriteLine("Myoow");
-        }
+        //base.Speak();
+        Console.WriteLine("Myoow");
     }
 }

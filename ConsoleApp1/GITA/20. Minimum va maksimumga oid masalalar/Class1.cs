@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.GITA._20._Minimum_va_maksimumga_oid_masalalar;
+namespace ConsoleApp1;
 
 public class Class1
 {

@@ -1,32 +1,31 @@
-﻿namespace ConsoleApp1._3_dars
+﻿namespace ConsoleApp1;
+
+internal class Duck
 {
-    internal class Duck
+    public virtual void display()
     {
-        public virtual void display()
-        {
-            Console.WriteLine("Oynaga Duckning displayi chiqdi :===> 1");
-        }
-        public void swim()
-        {
-            Console.WriteLine("O'rdaklar suza oladi");
-        }
-        public void quack()
-        {
-            Console.WriteLine("O'rdaklar doimo quack-quack qilib yurishadi");
-        }
+        Console.WriteLine("Oynaga Duckning displayi chiqdi :===> 1");
     }
-    class MallardDuck : Duck
+    public void swim()
     {
-        public override void display()
-        {
-            Console.WriteLine("looks like a mallard");
-        }
+        Console.WriteLine("O'rdaklar suza oladi");
     }
-    class RedheadDuck : Duck
+    public void quack()
     {
-        public override void display()
-        {
-            Console.WriteLine("looks like a redhead");
-        }
+        Console.WriteLine("O'rdaklar doimo quack-quack qilib yurishadi");
+    }
+}
+class MallardDuck : Duck
+{
+    public override void display()
+    {
+        Console.WriteLine("looks like a mallard");
+    }
+}
+class RedheadDuck : Duck
+{
+    public override void display()
+    {
+        Console.WriteLine("looks like a redhead");
     }
 }

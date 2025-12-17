@@ -1,18 +1,17 @@
-﻿namespace ConsoleApp1._5_dars
+﻿namespace ConsoleApp1;
+
+internal class Dayys
 {
-    internal class Dayys
-    {
-        public DateTime Date { get; set; }
-        public DaysOfWeek DayOfWeek { get; set; }
-    }
-    enum DaysOfWeek
-    {
-        Monday = 1,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
-    }
+    public DateTime Date { get; set; }
+    public DaysOfWeek DayOfWeek { get; set; }
+}
+enum DaysOfWeek
+{
+    Monday = 1,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
 }

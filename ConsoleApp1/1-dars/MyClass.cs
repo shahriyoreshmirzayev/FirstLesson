@@ -1,20 +1,19 @@
-﻿namespace ConsoleApp1._1_dars
+﻿namespace ConsoleApp1;
+
+internal class MyClass
 {
-    internal class MyClass
+    public int First;
+    public int Second;
+    public void AboutFields()
     {
-        public int First;
-        public int Second;
-        public void AboutFields()
-        {
-            Console.WriteLine($"Ikkita sonni qiymati ==> {First} : {Second}");
-        }
-        public int SumOfFields()
-        {
-            return First + Second;
-        }
-        public int MaxOfFields()
-        {
-            return First > Second ? First : Second;
-        }
+        Console.WriteLine($"Ikkita sonni qiymati ==> {First} : {Second}");
+    }
+    public int SumOfFields()
+    {
+        return First + Second;
+    }
+    public int MaxOfFields()
+    {
+        return First > Second ? First : Second;
     }
 }

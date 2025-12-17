@@ -1,11 +1,10 @@
-﻿namespace ConsoleApp1._8_dars
+﻿namespace ConsoleApp1;
+
+internal class Class1
 {
-    internal class Class1
+    public string sozlar { get; set; }
+    public void birnima()
     {
-        public string sozlar { get; set; }
-        public void birnima()
-        {
-            Console.WriteLine("Samariddin");
-        }
+        Console.WriteLine("Samariddin");
     }
 }
